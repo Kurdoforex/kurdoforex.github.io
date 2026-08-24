@@ -3,223 +3,602 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07090d">
 
-<title>XAUUSD Gold SMC Academy</title>
+<title>GoldLab • XAUUSD Trading Academy By Kurdo </title>
 
 <style>
+:root{
+    --bg:#05070a;
+    --panel:#0b0f15;
+    --panel2:#0f141c;
+    --border:#1d2632;
+    --text:#f5f7fa;
+    --muted:#7f8a99;
+    --gold:#f5b942;
+    --gold2:#d99416;
+    --green:#22c55e;
+    --red:#ef4444;
+    --blue:#3b82f6;
+    --radius:14px;
+}
+
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
 }
 
-html,body{
-    width:100%;
-    min-height:100%;
-    background:#050505;
-    color:#f5f5f5;
-    font-family:Arial,Helvetica,sans-serif;
+html{
+    scroll-behavior:smooth;
 }
 
 body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 50% -10%,rgba(245,185,66,.08),transparent 35%),
+        var(--bg);
+    color:var(--text);
+    font-family:Inter,Arial,Helvetica,sans-serif;
     overflow-x:hidden;
 }
 
-/* ================= HEADER ================= */
-
-header{
-    position:sticky;
-    top:0;
-    z-index:9999;
-    background:#080808;
-    border-bottom:1px solid #222;
-    padding:14px 3%;
+button,
+input{
+    font:inherit;
 }
 
-.navbar{
-    max-width:1800px;
-    margin:auto;
+/* =====================================================
+   APP
+===================================================== */
+
+.app{
+    min-height:100vh;
+    display:flex;
+}
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar{
+    width:250px;
+    min-width:250px;
+    height:100vh;
+    position:fixed;
+    left:0;
+    top:0;
+    z-index:1000;
+    background:#080b10;
+    border-right:1px solid var(--border);
+    padding:22px 15px;
+    display:flex;
+    flex-direction:column;
+}
+
+.brand{
+    padding:5px 12px 25px;
+    border-bottom:1px solid var(--border);
+    margin-bottom:20px;
+}
+
+.brand-name{
+    font-size:21px;
+    font-weight:800;
+    letter-spacing:.5px;
+}
+
+.brand-name span{
+    color:var(--gold);
+}
+
+.brand-small{
+    margin-top:5px;
+    color:var(--muted);
+    font-size:11px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.side-nav{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+.side-btn{
+    width:100%;
+    border:0;
+    background:transparent;
+    color:#8993a1;
+    padding:12px 13px;
+    border-radius:9px;
+    cursor:pointer;
+    text-align:left;
+    font-size:13px;
+    transition:.2s;
+}
+
+.side-btn:hover{
+    background:#11161e;
+    color:white;
+}
+
+.side-btn.active{
+    background:rgba(245,185,66,.12);
+    color:var(--gold);
+}
+
+.side-section{
+    margin:25px 12px 8px;
+    color:#4f5966;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+}
+
+.sidebar-bottom{
+    margin-top:auto;
+    border-top:1px solid var(--border);
+    padding:16px 10px 0;
+}
+
+.market-status{
     display:flex;
     align-items:center;
-    gap:25px;
-}
-
-.logo{
-    flex-shrink:0;
-    font-size:19px;
-    font-weight:bold;
-    letter-spacing:1px;
-}
-
-.logo span{
-    color:#eab308;
-}
-
-.nav-scroll{
-    display:flex;
     gap:8px;
-    overflow-x:auto;
-    scrollbar-width:none;
-    flex:1;
+    color:#9ca6b4;
+    font-size:12px;
 }
 
-.nav-scroll::-webkit-scrollbar{
+.dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 10px rgba(34,197,94,.6);
+}
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.main{
+    width:calc(100% - 250px);
+    margin-left:250px;
+    min-width:0;
+}
+
+/* =====================================================
+   TOPBAR
+===================================================== */
+
+.topbar{
+    height:72px;
+    position:sticky;
+    top:0;
+    z-index:900;
+    background:rgba(5,7,10,.9);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+}
+
+.mobile-brand{
     display:none;
 }
 
-.nav-btn{
-    flex-shrink:0;
-    padding:9px 15px;
-    border:1px solid #292929;
-    border-radius:7px;
-    background:#090909;
-    color:#aaa;
-    cursor:pointer;
-    font-size:13px;
+.top-search{
+    width:340px;
+    max-width:40vw;
+    position:relative;
 }
 
-.nav-btn:hover{
-    color:#fff;
-    border-color:#555;
+.top-search input{
+    width:100%;
+    background:#0c1118;
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:10px 13px;
+    color:white;
+    outline:none;
 }
 
-.nav-btn.active{
-    background:#eab308;
-    color:#000;
-    border-color:#eab308;
-    font-weight:bold;
+.top-search input:focus{
+    border-color:#765c25;
 }
 
-/* ================= PAGES ================= */
+.top-right{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.market-pill{
+    border:1px solid var(--border);
+    background:#0b1017;
+    border-radius:8px;
+    padding:8px 12px;
+    font-size:11px;
+    color:#9ca6b4;
+}
+
+.profile{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#f5b942,#8c5b0e);
+    display:grid;
+    place-items:center;
+    color:#050505;
+    font-weight:800;
+    font-size:12px;
+}
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.content{
+    width:100%;
+    max-width:1900px;
+    margin:auto;
+    padding:30px;
+}
 
 .page{
     display:none;
-    width:100%;
-    min-height:calc(100vh - 80px);
-    padding:30px 4%;
 }
 
 .page.active{
     display:block;
 }
 
-#chartPage{
-    padding:8px;
-    height:calc(100vh - 80px);
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:38px;
+    background:
+        linear-gradient(120deg,rgba(245,185,66,.08),transparent 45%),
+        #0a0e14;
+    margin-bottom:24px;
 }
 
-.chart-box{
-    width:100%;
-    height:100%;
-    min-height:550px;
-    border:1px solid #222;
+.eyebrow{
+    color:var(--gold);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+}
+
+.hero h1{
+    font-size:clamp(32px,4vw,58px);
+    line-height:1.02;
+    max-width:900px;
+    letter-spacing:-2px;
+}
+
+.hero h1 span{
+    color:var(--gold);
+}
+
+.hero p{
+    color:var(--muted);
+    max-width:750px;
+    margin-top:16px;
+    font-size:15px;
+    line-height:1.7;
+}
+
+.hero-actions{
+    display:flex;
+    gap:10px;
+    margin-top:25px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:1px solid var(--border);
+    background:#10161f;
+    color:#ddd;
     border-radius:8px;
-    overflow:hidden;
+    padding:11px 17px;
+    cursor:pointer;
+    font-weight:600;
+    font-size:12px;
 }
 
-/* ================= TITLES ================= */
-
-.title{
-    font-size:32px;
-    margin-bottom:7px;
+.btn:hover{
+    border-color:#59616d;
 }
 
-.subtitle{
-    color:#777;
-    margin-bottom:25px;
+.btn.primary{
+    background:var(--gold);
+    color:#050505;
+    border-color:var(--gold);
 }
 
-/* ================= CARDS ================= */
+/* =====================================================
+   STAT GRID
+===================================================== */
 
-.grid{
+.stats{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:15px;
+    margin-bottom:24px;
 }
 
-.card{
-    background:#0b0b0b;
-    border:1px solid #222;
-    border-radius:10px;
-    overflow:hidden;
-}
-
-.card-content{
+.stat{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:12px;
     padding:20px;
 }
 
-.card h3{
-    margin-bottom:9px;
+.stat-label{
+    color:#697482;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
 }
 
-.card p{
-    color:#888;
+.stat-value{
+    font-size:24px;
+    font-weight:750;
+    margin-top:8px;
+}
+
+.stat-change{
+    font-size:11px;
+    margin-top:6px;
+    color:var(--green);
+}
+
+/* =====================================================
+   GRID
+===================================================== */
+
+.two-col{
+    display:grid;
+    grid-template-columns:minmax(0,2fr) minmax(300px,1fr);
+    gap:18px;
+}
+
+.three-col{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:18px;
+}
+
+.panel{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:14px;
+    overflow:hidden;
+}
+
+.panel-header{
+    min-height:60px;
+    padding:17px 20px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.panel-title{
+    font-weight:700;
     font-size:14px;
 }
 
-.tag{
-    display:inline-block;
-    color:#fde047;
-    background:rgba(234,179,8,.12);
-    border:1px solid rgba(234,179,8,.3);
-    border-radius:4px;
-    padding:4px 8px;
-    font-size:10px;
-    font-weight:bold;
+.panel-subtitle{
+    color:#697482;
+    font-size:11px;
+    margin-top:3px;
 }
 
-/* ================= ANALYSIS ================= */
-
-.analysis-chart{
-    height:270px;
-    background:#0c0d10;
-    border-bottom:1px solid #222;
+.panel-body{
+    padding:20px;
 }
 
-.analysis-chart svg{
+/* =====================================================
+   CHART
+===================================================== */
+
+.chart-panel{
+    min-height:600px;
+}
+
+.chart-wrap{
+    height:620px;
+    width:100%;
+}
+
+.chart-wrap .tradingview-widget-container,
+.chart-wrap .tradingview-widget-container__widget{
     width:100%;
     height:100%;
 }
 
-/* ================= VIDEOS ================= */
+/* =====================================================
+   WATCHLIST
+===================================================== */
 
-.video-card iframe{
-    width:100%;
-    height:270px;
-    border:0;
-    display:block;
-}
-
-.video-card .card-content{
-    min-height:130px;
-}
-
-/* ================= CHAT ================= */
-
-.chat{
-    height:72vh;
-    min-height:500px;
-    background:#0b0b0b;
-    border:1px solid #222;
-    border-radius:10px;
+.watchlist{
     display:flex;
     flex-direction:column;
-    overflow:hidden;
 }
 
-.chat-header{
-    background:#111;
+.watch{
+    display:grid;
+    grid-template-columns:1fr auto auto;
+    gap:15px;
     padding:15px 20px;
-    border-bottom:1px solid #222;
-    display:flex;
-    justify-content:space-between;
+    border-bottom:1px solid #141b24;
     align-items:center;
 }
 
-.online{
-    color:#22c55e;
+.watch:last-child{
+    border-bottom:0;
+}
+
+.watch-name{
     font-size:13px;
+    font-weight:650;
+}
+
+.watch-price{
+    font-size:12px;
+}
+
+.green{
+    color:var(--green);
+}
+
+.red{
+    color:var(--red);
+}
+
+/* =====================================================
+   SECTION HEAD
+===================================================== */
+
+.section-head{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    gap:20px;
+    margin:30px 0 15px;
+}
+
+.section-head h2{
+    font-size:21px;
+}
+
+.section-head p{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:4px;
+}
+
+/* =====================================================
+   ACADEMY CARDS
+===================================================== */
+
+.academy-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:15px;
+}
+
+.lesson{
+    min-height:190px;
+    background:linear-gradient(145deg,#0d131b,#090c11);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:22px;
+    transition:.2s;
+}
+
+.lesson:hover{
+    transform:translateY(-2px);
+    border-color:#39424e;
+}
+
+.lesson-number{
+    color:var(--gold);
+    font-size:11px;
     font-weight:bold;
+}
+
+.lesson h3{
+    margin-top:16px;
+    margin-bottom:8px;
+}
+
+.lesson p{
+    color:#798492;
+    font-size:12px;
+    line-height:1.6;
+}
+
+/* =====================================================
+   CHECKLIST
+===================================================== */
+
+.checklist{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+}
+
+.check{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:11px 12px;
+    background:#0d1219;
+    border:1px solid #18202b;
+    border-radius:8px;
+    color:#b7bec8;
+    font-size:12px;
+}
+
+.check input{
+    accent-color:var(--gold);
+}
+
+/* =====================================================
+   VIDEO
+===================================================== */
+
+.video-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:20px;
+}
+
+.video iframe{
+    width:100%;
+    height:350px;
+    border:0;
+    display:block;
+    background:#000;
+}
+
+.video-info{
+    padding:18px;
+}
+
+.video-info h3{
+    font-size:15px;
+    margin-bottom:7px;
+}
+
+.video-info p{
+    color:#737d8b;
+    font-size:12px;
+}
+
+/* =====================================================
+   CHAT
+===================================================== */
+
+.chat-panel{
+    height:700px;
+    display:flex;
+    flex-direction:column;
 }
 
 .chat-messages{
@@ -231,206 +610,280 @@ header{
     gap:12px;
 }
 
-.message{
-    max-width:85%;
-    background:#121212;
-    border:1px solid #222;
-    border-radius:7px;
-    padding:11px 14px;
+.chat-message{
+    max-width:75%;
+    background:#10161e;
+    border:1px solid #202a36;
+    border-radius:9px;
+    padding:11px 13px;
+    font-size:13px;
 }
 
-.message.you{
+.chat-message.you{
     align-self:flex-end;
-    border-color:#ca8a04;
+    border-color:#765c25;
+    background:rgba(245,185,66,.07);
 }
 
-.username{
-    color:#eab308;
-    font-size:12px;
+.chat-user{
+    color:var(--gold);
+    font-size:10px;
     font-weight:bold;
-    margin-bottom:3px;
+    margin-bottom:5px;
 }
 
-.chat-input{
+.chat-compose{
     display:flex;
     gap:8px;
-    padding:12px;
-    background:#111;
-    border-top:1px solid #222;
+    padding:13px;
+    border-top:1px solid var(--border);
+    background:#090d12;
 }
 
-.chat-input input{
+.chat-compose input,
+.ai-compose input{
     flex:1;
-    background:#050505;
-    border:1px solid #292929;
+    min-width:0;
+    background:#05080c;
     color:white;
+    border:1px solid var(--border);
     padding:12px;
-    border-radius:6px;
+    border-radius:8px;
     outline:none;
 }
 
-.chat-input button{
-    background:#eab308;
-    color:#000;
-    border:0;
-    padding:0 22px;
-    border-radius:6px;
-    font-weight:bold;
-}
+/* =====================================================
+   AI
+===================================================== */
 
-/* ================= AI ================= */
-
-.ai-grid{
+.ai-layout{
     display:grid;
-    grid-template-columns:350px 1fr;
-    gap:20px;
+    grid-template-columns:330px minmax(0,1fr);
+    gap:18px;
 }
 
-.ai-card{
-    background:#0b0b0b;
-    border:1px solid #222;
-    border-radius:10px;
-    padding:20px;
+.upload-card{
+    padding:22px;
 }
 
-.upload{
+.upload-area{
     margin-top:20px;
-    border:1px dashed #333;
-    border-radius:8px;
-    padding:25px;
+    border:1px dashed #37404c;
+    border-radius:10px;
+    padding:35px 15px;
     text-align:center;
+    color:#697482;
 }
 
-.upload label{
+.upload-area label{
     display:inline-block;
-    background:#eab308;
-    color:#000;
-    padding:11px 17px;
-    border-radius:6px;
+    background:var(--gold);
+    color:#050505;
+    padding:11px 15px;
+    border-radius:7px;
+    font-size:12px;
     font-weight:bold;
     cursor:pointer;
 }
 
-#preview{
+#chartPreview{
+    display:none;
     width:100%;
     max-height:280px;
     object-fit:contain;
-    margin-top:15px;
-    display:none;
-    border-radius:6px;
+    margin-top:18px;
+    border-radius:8px;
 }
 
-.ai-chat{
-    height:600px;
-    background:#060606;
-    border:1px solid #222;
-    border-radius:8px;
+.ai-panel{
+    height:650px;
     display:flex;
     flex-direction:column;
-    overflow:hidden;
 }
 
 .ai-messages{
     flex:1;
     overflow-y:auto;
-    padding:18px;
+    padding:20px;
     display:flex;
     flex-direction:column;
     gap:12px;
 }
 
 .ai-message{
-    background:#141414;
-    border-left:3px solid #eab308;
+    max-width:80%;
+    background:#10161e;
+    border:1px solid #202a36;
+    border-left:3px solid var(--gold);
     padding:13px;
-    border-radius:6px;
-    max-width:90%;
+    border-radius:8px;
+    font-size:13px;
+    line-height:1.6;
 }
 
-.ai-message.user{
+.ai-message.you{
     align-self:flex-end;
-    border-left-color:#3b82f6;
-    background:#101a30;
+    border-left-color:var(--blue);
 }
 
 .ai-name{
-    color:#eab308;
-    font-size:11px;
+    color:var(--gold);
+    font-size:10px;
     font-weight:bold;
     margin-bottom:5px;
 }
 
-.ai-input{
+.ai-compose{
     display:flex;
     gap:8px;
-    padding:12px;
-    background:#111;
-    border-top:1px solid #222;
+    padding:13px;
+    border-top:1px solid var(--border);
 }
 
-.ai-input input{
-    flex:1;
-    background:#050505;
-    border:1px solid #292929;
-    color:#fff;
-    padding:11px;
-    border-radius:6px;
-    outline:none;
-}
-
-.ai-input button{
-    background:#eab308;
-    border:0;
-    padding:0 20px;
-    border-radius:6px;
-    font-weight:bold;
-}
-
-/* ================= FOOTER ================= */
+/* =====================================================
+   FOOTER
+===================================================== */
 
 footer{
-    border-top:1px solid #222;
-    background:#040404;
-    color:#555;
+    margin-top:40px;
+    padding:25px 10px;
     text-align:center;
-    padding:20px;
-    font-size:12px;
+    border-top:1px solid var(--border);
+    color:#4e5864;
+    font-size:11px;
 }
 
-/* ================= MOBILE ================= */
+/* =====================================================
+   MOBILE
+===================================================== */
+
+.mobile-nav{
+    display:none;
+}
+
+@media(max-width:1100px){
+
+    .sidebar{
+        width:210px;
+        min-width:210px;
+    }
+
+    .main{
+        width:calc(100% - 210px);
+        margin-left:210px;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .academy-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .three-col{
+        grid-template-columns:1fr;
+    }
+}
 
 @media(max-width:800px){
 
-    .navbar{
+    .sidebar{
+        display:none;
+    }
+
+    .main{
+        width:100%;
+        margin-left:0;
+    }
+
+    .topbar{
+        height:auto;
+        min-height:64px;
+        padding:12px 15px;
+        gap:10px;
+    }
+
+    .mobile-brand{
         display:block;
+        font-weight:800;
+        font-size:15px;
+        white-space:nowrap;
     }
 
-    .logo{
-        margin-bottom:12px;
+    .mobile-brand span{
+        color:var(--gold);
     }
 
-    .nav-scroll{
+    .top-search{
+        max-width:none;
         width:100%;
     }
 
-    .page{
-        padding:22px 14px;
+    .market-pill{
+        display:none;
     }
 
-    #chartPage{
-        padding:4px;
+    .content{
+        padding:15px;
     }
 
-    .chart-box{
-        min-height:500px;
+    .hero{
+        padding:25px 20px;
     }
 
-    .ai-grid{
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .two-col,
+    .ai-layout,
+    .video-grid{
         grid-template-columns:1fr;
     }
 
-    .video-card iframe{
-        height:220px;
+    .academy-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .chart-wrap{
+        height:520px;
+    }
+
+    .video iframe{
+        height:250px;
+    }
+}
+
+@media(max-width:500px){
+
+    .top-search{
+        display:none;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .academy-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .hero{
+        padding:22px 17px;
+    }
+
+    .chart-wrap{
+        height:500px;
+    }
+
+    .chat-panel,
+    .ai-panel{
+        height:600px;
     }
 }
 </style>
@@ -438,42 +891,106 @@ footer{
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<div class="app">
 
-<header>
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
 
-<div class="navbar">
+<aside class="sidebar">
 
-<div class="logo">
-XAUUSD <span>•</span> GOLD ACADEMY
+<div class="brand">
+
+<div class="brand-name">
+Gold<span>Lab</span>
 </div>
 
-<div class="nav-scroll">
+<div class="brand-small">
+XAUUSD Trading Terminal
+</div>
 
-<button class="nav-btn active" data-page="chartPage">
-Live Chart
+</div>
+
+<div class="side-section">Workspace</div>
+
+<nav class="side-nav">
+
+<button class="side-btn active" data-page="dashboard">
+◈ Dashboard
 </button>
 
-<button class="nav-btn" data-page="analysisPage">
-Market Analysis
+<button class="side-btn" data-page="chart">
+▣ Live Chart
 </button>
 
-<button class="nav-btn" data-page="rulesPage">
-Core Rules
+<button class="side-btn" data-page="analysis">
+⌁ Market Analysis
 </button>
 
-<button class="nav-btn" data-page="videosPage">
-Video Academy
+<button class="side-btn" data-page="academy">
+◆ SMC Academy
 </button>
 
-<button class="nav-btn" data-page="chatPage">
-Live Chat
+<button class="side-btn" data-page="videos">
+▶ Video Academy
 </button>
 
-<button class="nav-btn" data-page="aiPage">
-AI Assistant
+</nav>
+
+<div class="side-section">Community</div>
+
+<nav class="side-nav">
+
+<button class="side-btn" data-page="chat">
+◎ Traders Chat
 </button>
 
+<button class="side-btn" data-page="ai">
+✦ AI Assistant
+</button>
+
+</nav>
+
+<div class="sidebar-bottom">
+
+<div class="market-status">
+<span class="dot"></span>
+Market data interface
+</div>
+
+</div>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main">
+
+<header class="topbar">
+
+<div class="mobile-brand">
+Gold<span>Lab</span>
+</div>
+
+<div class="top-search">
+<input
+id="searchInput"
+type="search"
+placeholder="Search XAUUSD, FVG, liquidity..."
+>
+</div>
+
+<div class="top-right">
+
+<div class="market-pill">
+XAUUSD • 15M
+</div>
+
+<div class="profile">
+GL
 </div>
 
 </div>
@@ -481,11 +998,142 @@ AI Assistant
 </header>
 
 
-<!-- ================= CHART ================= -->
+<div class="content">
 
-<section id="chartPage" class="page active">
 
-<div class="chart-box">
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<section id="dashboard" class="page active">
+
+<div class="hero">
+
+<div class="eyebrow">
+XAUUSD • SMART MONEY CONCEPTS
+</div>
+
+<h1>
+Trade the market with a
+<span>clearer framework.</span>
+</h1>
+
+<p>
+A professional educational workspace for studying XAUUSD,
+market structure, liquidity, Fair Value Gaps, Order Blocks
+and execution concepts.
+</p>
+
+<div class="hero-actions">
+
+<button class="btn primary" data-page-jump="chart">
+Open Live Chart
+</button>
+
+<button class="btn" data-page-jump="academy">
+Explore Academy
+</button>
+
+</div>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+
+<div class="stat-label">
+Instrument
+</div>
+
+<div class="stat-value">
+XAUUSD
+</div>
+
+<div class="stat-change">
+Gold Spot
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-label">
+Primary timeframe
+</div>
+
+<div class="stat-value">
+15M
+</div>
+
+<div class="stat-change">
+Structure analysis
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-label">
+Framework
+</div>
+
+<div class="stat-value">
+SMC
+</div>
+
+<div class="stat-change">
+Liquidity based
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-label">
+Risk focus
+</div>
+
+<div class="stat-value">
+1 : 2+
+</div>
+
+<div class="stat-change">
+Risk / reward study
+</div>
+
+</div>
+
+</div>
+
+
+<div class="two-col">
+
+<div class="panel chart-panel">
+
+<div class="panel-header">
+
+<div>
+<div class="panel-title">
+XAUUSD Live Market
+</div>
+
+<div class="panel-subtitle">
+15 minute TradingView chart
+</div>
+</div>
+
+<button class="btn" data-page-jump="chart">
+Expand
+</button>
+
+</div>
+
+<div class="chart-wrap">
 
 <div class="tradingview-widget-container"
 style="height:100%;width:100%;">
@@ -505,8 +1153,8 @@ async>
 "theme":"dark",
 "style":"1",
 "locale":"en",
-"backgroundColor":"#050505",
-"gridColor":"rgba(32,32,32,1)",
+"backgroundColor":"#0b0f15",
+"gridColor":"rgba(29,38,50,1)",
 "hide_side_toolbar":false,
 "allow_symbol_change":true,
 "save_image":true
@@ -517,76 +1165,72 @@ async>
 
 </div>
 
-</section>
+</div>
 
 
-<!-- ================= ANALYSIS ================= -->
+<div class="panel">
 
-<section id="analysisPage" class="page">
+<div class="panel-header">
 
-<h1 class="title">
-Gold Market Analysis
-</h1>
+<div>
+<div class="panel-title">
+Watchlist
+</div>
 
-<p class="subtitle">
-XAUUSD educational Smart Money Concepts examples.
-</p>
-
-<div class="grid">
-
-
-<div class="card">
-
-<div class="analysis-chart">
-
-<svg viewBox="0 0 600 270">
-
-<rect width="600" height="270" fill="#0c0d10"/>
-
-<line x1="20" y1="65" x2="580" y2="65"
-stroke="#eab308"
-stroke-dasharray="5"/>
-
-<text x="25" y="52"
-fill="#fde047"
-font-size="12">
-BUY-SIDE LIQUIDITY
-</text>
-
-<polyline
-points="20,220 90,175 145,195 220,55 270,230 340,180 430,200 570,90"
-fill="none"
-stroke="#22c55e"
-stroke-width="3"/>
-
-<circle cx="220" cy="55" r="6"
-fill="#eab308"/>
-
-<text x="235" y="50"
-fill="#fde047"
-font-size="12">
-LIQUIDITY SWEEP
-</text>
-
-<text x="285" y="220"
-fill="#60a5fa"
-font-size="12">
-CHOCH
-</text>
-
-</svg>
+<div class="panel-subtitle">
+Market overview
+</div>
+</div>
 
 </div>
 
-<div class="card-content">
+<div class="watchlist">
 
-<span class="tag">XAUUSD • LIQUIDITY</span>
+<div class="watch">
+<div class="watch-name">XAUUSD</div>
+<div class="watch-price">Gold</div>
+<div class="green">LIVE</div>
+</div>
 
-<h3>Liquidity Sweep & CHOCH</h3>
+<div class="watch">
+<div class="watch-name">EURUSD</div>
+<div class="watch-price">FX</div>
+<div class="green">FX</div>
+</div>
+
+<div class="watch">
+<div class="watch-name">GBPUSD</div>
+<div class="watch-price">FX</div>
+<div class="green">FX</div>
+</div>
+
+<div class="watch">
+<div class="watch-name">NAS100</div>
+<div class="watch-price">Index</div>
+<div class="green">INDEX</div>
+</div>
+
+<div class="watch">
+<div class="watch-name">US500</div>
+<div class="watch-price">Index</div>
+<div class="green">INDEX</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="section-head">
+
+<div>
+
+<h2>Execution Checklist</h2>
 
 <p>
-Educational example of a liquidity sweep followed by a
-potential change in market structure.
+Use this before studying a potential setup.
 </p>
 
 </div>
@@ -594,145 +1238,93 @@ potential change in market structure.
 </div>
 
 
-<div class="card">
+<div class="three-col">
 
-<div class="analysis-chart">
+<div class="panel">
 
-<svg viewBox="0 0 600 270">
+<div class="panel-body">
 
-<rect width="600" height="270" fill="#0c0d10"/>
+<div class="checklist">
 
-<rect x="260" y="135"
-width="110" height="45"
-fill="rgba(34,197,94,.12)"
-stroke="#22c55e"/>
+<label class="check">
+<input type="checkbox">
+Higher timeframe bias checked
+</label>
 
-<text x="273" y="162"
-fill="#22c55e"
-font-size="11">
-FVG / ORDER BLOCK
-</text>
+<label class="check">
+<input type="checkbox">
+Important liquidity identified
+</label>
 
-<polyline
-points="20,220 90,170 150,195 240,55 315,180 400,115 570,45"
-fill="none"
-stroke="#22c55e"
-stroke-width="3"/>
+<label class="check">
+<input type="checkbox">
+Liquidity sweep confirmed
+</label>
 
-<text x="180" y="125"
-fill="#fff"
-font-size="12">
-BOS
-</text>
-
-</svg>
+<label class="check">
+<input type="checkbox">
+BOS / CHOCH confirmed
+</label>
 
 </div>
 
-<div class="card-content">
+</div>
 
-<span class="tag">XAUUSD • FVG</span>
+</div>
 
-<h3>FVG & Break of Structure</h3>
 
-<p>
-Educational example of displacement, imbalance and
-potential continuation.
+<div class="panel">
+
+<div class="panel-body">
+
+<div class="checklist">
+
+<label class="check">
+<input type="checkbox">
+FVG / OB identified
+</label>
+
+<label class="check">
+<input type="checkbox">
+Entry invalidation defined
+</label>
+
+<label class="check">
+<input type="checkbox">
+Risk calculated
+</label>
+
+<label class="check">
+<input type="checkbox">
+News checked
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<div class="panel-body">
+
+<h3 style="margin-bottom:10px;">
+Trading Journal
+</h3>
+
+<p style="color:#737d8b;font-size:12px;line-height:1.7;">
+Record your setups, mistakes, screenshots and results.
+A journal is more useful than simply counting winning trades.
 </p>
 
-</div>
-
-</div>
-
-
-<div class="card">
-
-<div class="analysis-chart">
-
-<svg viewBox="0 0 600 270">
-
-<rect width="600" height="270" fill="#0c0d10"/>
-
-<polyline
-points="20,220 100,170 160,200 240,70 310,150 390,90 500,145 570,50"
-fill="none"
-stroke="#22c55e"
-stroke-width="3"/>
-
-<rect x="275" y="135"
-width="120" height="45"
-fill="rgba(234,179,8,.12)"
-stroke="#eab308"/>
-
-<text x="290" y="162"
-fill="#fde047"
-font-size="11">
-ORDER BLOCK
-</text>
-
-</svg>
-
-</div>
-
-<div class="card-content">
-
-<span class="tag">XAUUSD • OB</span>
-
-<h3>Order Block Retest</h3>
-
-<p>
-Study how traders identify potential areas of interest
-after strong displacement.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="card">
-
-<div class="analysis-chart">
-
-<svg viewBox="0 0 600 270">
-
-<rect width="600" height="270" fill="#0c0d10"/>
-
-<polyline
-points="20,70 110,125 170,80 250,160 330,110 410,225 500,160 580,230"
-fill="none"
-stroke="#ef4444"
-stroke-width="3"/>
-
-<line x1="170" y1="80"
-x2="550" y2="80"
-stroke="#eab308"
-stroke-dasharray="5"/>
-
-<text x="180" y="68"
-fill="#fde047"
-font-size="12">
-SELL-SIDE LIQUIDITY
-</text>
-
-<circle cx="410" cy="225"
-r="6"
-fill="#eab308"/>
-
-</svg>
-
-</div>
-
-<div class="card-content">
-
-<span class="tag">XAUUSD • SMC</span>
-
-<h3>Sell-Side Liquidity Sweep</h3>
-
-<p>
-Educational example showing price moving below a previous
-low before a possible reaction.
-</p>
+<button
+class="btn primary"
+style="margin-top:18px;"
+data-page-jump="chat">
+Open Community
+</button>
 
 </div>
 
@@ -743,60 +1335,155 @@ low before a possible reaction.
 </section>
 
 
-<!-- ================= RULES ================= -->
+<!-- =====================================================
+     CHART
+===================================================== -->
 
-<section id="rulesPage" class="page">
+<section id="chart" class="page">
 
-<h1 class="title">
-XAUUSD Core Rules
-</h1>
+<div class="section-head">
 
-<p class="subtitle">
-Smart Money Concepts educational framework.
-</p>
+<div>
 
-<div class="grid">
+<h2>Live XAUUSD Chart</h2>
 
-<div class="card card-content">
-<h3>Liquidity</h3>
 <p>
-Identify important highs and lows where liquidity may be resting.
+TradingView • OANDA XAUUSD • 15 minute
 </p>
+
 </div>
 
-<div class="card card-content">
+</div>
+
+<div class="panel">
+
+<div class="chart-wrap" style="height:760px;">
+
+<div class="tradingview-widget-container"
+style="height:100%;width:100%;">
+
+<div class="tradingview-widget-container__widget"
+style="height:100%;width:100%;">
+</div>
+
+<script
+src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
+async>
+{
+"autosize":true,
+"symbol":"OANDA:XAUUSD",
+"interval":"15",
+"timezone":"Etc/UTC",
+"theme":"dark",
+"style":"1",
+"locale":"en",
+"backgroundColor":"#0b0f15",
+"gridColor":"rgba(29,38,50,1)",
+"hide_side_toolbar":false,
+"allow_symbol_change":true,
+"save_image":true
+}
+</script>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     ANALYSIS
+===================================================== -->
+
+<section id="analysis" class="page">
+
+<div class="section-head">
+
+<div>
+
+<h2>Market Analysis</h2>
+
+<p>
+Educational XAUUSD SMC examples.
+</p>
+
+</div>
+
+</div>
+
+<div class="academy-grid">
+
+<div class="lesson">
+<div class="lesson-number">01 • LIQUIDITY</div>
 <h3>Liquidity Sweep</h3>
 <p>
-Wait for price to interact with important liquidity before
-looking for confirmation.
+Study how price can interact with previous highs or lows
+before a potential structural reaction.
 </p>
 </div>
 
-<div class="card card-content">
-<h3>CHOCH</h3>
-<p>
-Study potential changes in market structure after a liquidity event.
-</p>
-</div>
-
-<div class="card card-content">
+<div class="lesson">
+<div class="lesson-number">02 • STRUCTURE</div>
 <h3>BOS</h3>
 <p>
-Use Break of Structure as part of your confirmation process.
+Break of Structure is used to study continuation and
+changes in market structure.
 </p>
 </div>
 
-<div class="card card-content">
-<h3>FVG</h3>
+<div class="lesson">
+<div class="lesson-number">03 • STRUCTURE</div>
+<h3>CHOCH</h3>
 <p>
-Study imbalances created by strong price displacement.
+Change of Character can be used as part of a broader
+confirmation process.
 </p>
 </div>
 
-<div class="card card-content">
+<div class="lesson">
+<div class="lesson-number">04 • IMBALANCE</div>
+<h3>Fair Value Gap</h3>
+<p>
+Study price imbalances created by strong displacement.
+</p>
+</div>
+
+<div class="lesson">
+<div class="lesson-number">05 • ORDER FLOW</div>
+<h3>Order Blocks</h3>
+<p>
+Learn how traders mark potential areas of interest after
+strong directional movement.
+</p>
+</div>
+
+<div class="lesson">
+<div class="lesson-number">06 • EXECUTION</div>
+<h3>Entry Confirmation</h3>
+<p>
+Combine context, liquidity and structure instead of relying
+on one signal alone.
+</p>
+</div>
+
+<div class="lesson">
+<div class="lesson-number">07 • RISK</div>
 <h3>Risk Management</h3>
 <p>
-Always define risk and invalidation before entering a trade.
+Define your invalidation and position risk before thinking
+about potential reward.
+</p>
+</div>
+
+<div class="lesson">
+<div class="lesson-number">08 • PSYCHOLOGY</div>
+<h3>Discipline</h3>
+<p>
+Follow a repeatable process and avoid changing rules after
+a losing trade.
 </p>
 </div>
 
@@ -805,38 +1492,137 @@ Always define risk and invalidation before entering a trade.
 </section>
 
 
-<!-- ================= VIDEOS ================= -->
+<!-- =====================================================
+     ACADEMY
+===================================================== -->
 
-<section id="videosPage" class="page">
+<section id="academy" class="page">
 
-<h1 class="title">
-SMC Video Academy
+<div class="hero">
+
+<div class="eyebrow">
+GOLDLAB ACADEMY
+</div>
+
+<h1>
+Build your
+<span>SMC knowledge.</span>
 </h1>
 
-<p class="subtitle">
-Lessons embedded directly into the academy.
+<p>
+A structured learning path covering the concepts used throughout
+the terminal.
 </p>
 
-<div class="grid">
+</div>
+
+<div class="academy-grid">
+
+<div class="lesson">
+<div class="lesson-number">MODULE 01</div>
+<h3>Market Structure</h3>
+<p>
+Learn highs, lows, trends, BOS and CHOCH.
+</p>
+</div>
+
+<div class="lesson">
+<div class="lesson-number">MODULE 02</div>
+<h3>Liquidity</h3>
+<p>
+Understand buy-side and sell-side liquidity.
+</p>
+</div>
+
+<div class="lesson">
+<div class="lesson-number">MODULE 03</div>
+<h3>Displacement</h3>
+<p>
+Study strong impulsive price movements.
+</p>
+</div>
+
+<div class="lesson">
+<div class="lesson-number">MODULE 04</div>
+<h3>FVG</h3>
+<p>
+Learn how traders identify price imbalances.
+</p>
+</div>
+
+<div class="lesson">
+<div class="lesson-number">MODULE 05</div>
+<h3>Order Blocks</h3>
+<p>
+Study potential institutional areas of interest.
+</p>
+</div>
+
+<div class="lesson">
+<div class="lesson-number">MODULE 06</div>
+<h3>Entries</h3>
+<p>
+Build a structured confirmation process.
+</p>
+</div>
+
+<div class="lesson">
+<div class="lesson-number">MODULE 07</div>
+<h3>Risk</h3>
+<p>
+Position sizing, invalidation and risk/reward.
+</p>
+</div>
+
+<div class="lesson">
+<div class="lesson-number">MODULE 08</div>
+<h3>Trading Psychology</h3>
+<p>
+Consistency, discipline and journaling.
+</p>
+</div>
+
+</div>
+
+</section>
 
 
-<div class="card video-card">
+<!-- =====================================================
+     VIDEOS
+===================================================== -->
+
+<section id="videos" class="page">
+
+<div class="section-head">
+
+<div>
+
+<h2>Video Academy</h2>
+
+<p>
+Educational trading videos embedded into GoldLab.
+</p>
+
+</div>
+
+</div>
+
+<div class="video-grid">
+
+<div class="panel video">
 
 <iframe
 src="https://www.youtube-nocookie.com/embed/rZnjkZ_JV2o"
-title="Liquidity Sweep"
+title="Trading Education"
 allowfullscreen>
 </iframe>
 
-<div class="card-content">
+<div class="video-info">
 
-<span class="tag">LESSON 01</span>
-
-<h3>Liquidity Sweeps</h3>
+<h3>Liquidity & Smart Money Concepts</h3>
 
 <p>
-Learn how liquidity sweeps are analysed around important highs
-and lows.
+Educational lesson about liquidity and market structure.
 </p>
 
 </div>
@@ -844,22 +1630,20 @@ and lows.
 </div>
 
 
-<div class="card video-card">
+<div class="panel video">
 
 <iframe
 src="https://www.youtube-nocookie.com/embed/2Ow2b8X0GEg"
-title="Fair Value Gap"
+title="Fair Value Gaps"
 allowfullscreen>
 </iframe>
 
-<div class="card-content">
-
-<span class="tag">LESSON 02</span>
+<div class="video-info">
 
 <h3>Fair Value Gaps</h3>
 
 <p>
-Understand imbalance and how FVGs are used in market analysis.
+Educational explanation of price imbalance concepts.
 </p>
 
 </div>
@@ -867,7 +1651,7 @@ Understand imbalance and how FVGs are used in market analysis.
 </div>
 
 
-<div class="card video-card">
+<div class="panel video">
 
 <iframe
 src="https://www.youtube-nocookie.com/embed/pBn-xicM7tU"
@@ -875,14 +1659,12 @@ title="Order Blocks"
 allowfullscreen>
 </iframe>
 
-<div class="card-content">
-
-<span class="tag">LESSON 03</span>
+<div class="video-info">
 
 <h3>Order Blocks</h3>
 
 <p>
-Educational introduction to Order Blocks and areas of interest.
+Learn the basic concept behind Order Blocks.
 </p>
 
 </div>
@@ -890,7 +1672,7 @@ Educational introduction to Order Blocks and areas of interest.
 </div>
 
 
-<div class="card video-card">
+<div class="panel video">
 
 <iframe
 src="https://www.youtube-nocookie.com/embed/M7lc1UVf-VE"
@@ -898,14 +1680,12 @@ title="Market Structure"
 allowfullscreen>
 </iframe>
 
-<div class="card-content">
-
-<span class="tag">LESSON 04</span>
+<div class="video-info">
 
 <h3>Market Structure</h3>
 
 <p>
-Study BOS, CHOCH and basic market structure concepts.
+Study structural concepts used in technical analysis.
 </p>
 
 </div>
@@ -917,62 +1697,82 @@ Study BOS, CHOCH and basic market structure concepts.
 </section>
 
 
-<!-- ================= CHAT ================= -->
+<!-- =====================================================
+     CHAT
+===================================================== -->
 
-<section id="chatPage" class="page">
+<section id="chat" class="page">
 
-<h1 class="title">
-Gold Traders Chat
-</h1>
+<div class="section-head">
 
-<p class="subtitle">
-Community interface.
+<div>
+
+<h2>Gold Traders Community</h2>
+
+<p>
+Community chat interface.
 </p>
 
-<div class="chat">
+</div>
 
-<div class="chat-header">
+</div>
 
-<strong>Gold Community</strong>
+<div class="panel chat-panel">
 
-<div class="online">
-● Online
+<div class="panel-header">
+
+<div>
+
+<div class="panel-title">
+Live Discussion
+</div>
+
+<div class="panel-subtitle">
+Community room
+</div>
+
+</div>
+
+<div class="market-status">
+<span class="dot"></span>
+Online
 </div>
 
 </div>
 
 <div id="chatMessages" class="chat-messages">
 
-<div class="message">
+<div class="chat-message">
 
-<div class="username">
-SYSTEM
+<div class="chat-user">
+GOLDLAB
 </div>
 
-Welcome to the Gold Traders Community.
+Welcome to the XAUUSD community.
 
 </div>
 
-<div class="message">
+<div class="chat-message">
 
-<div class="username">
+<div class="chat-user">
 Trader_Alex
 </div>
 
-Watching XAUUSD structure today.
+Watching the London session for liquidity.
 
 </div>
 
 </div>
 
-<div class="chat-input">
+<div class="chat-compose">
 
 <input
 id="chatInput"
 placeholder="Write a message..."
+autocomplete="off"
 >
 
-<button id="sendChat">
+<button class="btn primary" id="chatSend">
 Send
 </button>
 
@@ -983,90 +1783,108 @@ Send
 </section>
 
 
-<!-- ================= AI ================= -->
+<!-- =====================================================
+     AI
+===================================================== -->
 
-<section id="aiPage" class="page">
+<section id="ai" class="page">
 
-<h1 class="title">
-Gold AI Assistant
-</h1>
+<div class="section-head">
 
-<p class="subtitle">
-Chat with the assistant and upload an XAUUSD chart.
-</p>
+<div>
 
-<div class="ai-grid">
-
-
-<div class="ai-card">
-
-<h3>Chart Upload</h3>
+<h2>AI Trading Assistant</h2>
 
 <p>
-Upload an XAUUSD screenshot for your AI workflow.
+Study assistant for XAUUSD concepts and chart discussions.
 </p>
 
-<div class="upload">
+</div>
+
+</div>
+
+<div class="ai-layout">
+
+<div class="panel upload-card">
+
+<h3>Chart Analysis</h3>
+
+<p style="color:#737d8b;font-size:12px;margin-top:8px;line-height:1.6;">
+Upload a screenshot of your chart.
+The current frontend can preview the image locally.
+</p>
+
+<div class="upload-area">
 
 <label>
 
-📷 Upload Chart
+Upload Chart
 
 <input
 type="file"
-id="chartInput"
+id="chartUpload"
 accept="image/*"
-style="display:none"
+hidden
 >
 
 </label>
 
-<p id="fileName"
-style="color:#666;margin-top:12px;font-size:12px;">
-No file selected
+<p id="uploadName"
+style="margin-top:12px;font-size:11px;">
+No image selected
 </p>
 
-<img id="preview">
+<img id="chartPreview">
 
 </div>
 
 </div>
 
 
-<div class="ai-card">
+<div class="panel ai-panel">
 
-<h3>AI Chat</h3>
+<div class="panel-header">
 
-<div class="ai-chat">
+<div>
+
+<div class="panel-title">
+GoldLab AI
+</div>
+
+<div class="panel-subtitle">
+SMC study assistant
+</div>
+
+</div>
+
+</div>
 
 <div id="aiMessages" class="ai-messages">
 
 <div class="ai-message">
 
 <div class="ai-name">
-GOLD AI
+GOLDLAB AI
 </div>
 
-Hello! I'm your Gold trading study assistant.
-Ask me about liquidity, FVG, Order Blocks, BOS,
-CHOCH, market structure or risk management.
-
-</div>
+Hi. Ask me about XAUUSD, liquidity, BOS, CHOCH,
+FVG, Order Blocks, risk management or trading psychology.
 
 </div>
 
-<div class="ai-input">
+</div>
+
+<div class="ai-compose">
 
 <input
 id="aiInput"
-placeholder="Ask me anything..."
+placeholder="Ask something about XAUUSD..."
+autocomplete="off"
 >
 
-<button id="sendAI">
+<button class="btn primary" id="aiSend">
 Send
 </button>
-
-</div>
 
 </div>
 
@@ -1079,53 +1897,67 @@ Send
 
 <footer>
 
-© 2026 XAUUSD Gold SMC Academy • Educational purposes only.
+GoldLab XAUUSD Trading Academy • Educational purposes only.
+Trading involves substantial risk.
 
 </footer>
+
+</div>
+
+</main>
+
+</div>
 
 
 <script>
 
 /* =====================================================
-   TAB SYSTEM
-   NO INLINE ONCLICK
+   NAVIGATION
 ===================================================== */
 
-document.addEventListener("DOMContentLoaded",function(){
+const navButtons=document.querySelectorAll(".side-btn");
+const pages=document.querySelectorAll(".page");
+const pageJumps=document.querySelectorAll("[data-page-jump]");
 
-    const buttons=document.querySelectorAll(".nav-btn");
-    const pages=document.querySelectorAll(".page");
+function openPage(pageId){
 
-    buttons.forEach(function(button){
-
-        button.addEventListener("click",function(){
-
-            const pageId=this.dataset.page;
-
-            pages.forEach(function(page){
-                page.classList.remove("active");
-            });
-
-            buttons.forEach(function(btn){
-                btn.classList.remove("active");
-            });
-
-            const selected=document.getElementById(pageId);
-
-            if(selected){
-                selected.classList.add("active");
-            }
-
-            this.classList.add("active");
-
-            window.scrollTo({
-                top:0,
-                behavior:"smooth"
-            });
-
-        });
-
+    pages.forEach(page=>{
+        page.classList.remove("active");
     });
+
+    navButtons.forEach(button=>{
+        button.classList.remove("active");
+    });
+
+    const page=document.getElementById(pageId);
+
+    if(page){
+        page.classList.add("active");
+    }
+
+    navButtons.forEach(button=>{
+        if(button.dataset.page===pageId){
+            button.classList.add("active");
+        }
+    });
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+navButtons.forEach(button=>{
+    button.addEventListener("click",()=>{
+        openPage(button.dataset.page);
+    });
+});
+
+pageJumps.forEach(button=>{
+    button.addEventListener("click",()=>{
+        openPage(button.dataset.pageJump);
+    });
+});
 
 
 /* =====================================================
@@ -1133,10 +1965,10 @@ document.addEventListener("DOMContentLoaded",function(){
 ===================================================== */
 
 const chatInput=document.getElementById("chatInput");
-const sendChat=document.getElementById("sendChat");
+const chatSend=document.getElementById("chatSend");
 const chatMessages=document.getElementById("chatMessages");
 
-function sendMessage(){
+function sendChat(){
 
     const text=chatInput.value.trim();
 
@@ -1144,19 +1976,17 @@ function sendMessage(){
 
     const message=document.createElement("div");
 
-    message.className="message you";
+    message.className="chat-message you";
 
-    message.innerHTML=`
+    const user=document.createElement("div");
+    user.className="chat-user";
+    user.textContent="YOU";
 
-        <div class="username">
-        You
-        </div>
+    const content=document.createElement("div");
+    content.textContent=text;
 
-        <div></div>
-
-    `;
-
-    message.querySelector("div:last-child").textContent=text;
+    message.appendChild(user);
+    message.appendChild(content);
 
     chatMessages.appendChild(message);
 
@@ -1165,40 +1995,37 @@ function sendMessage(){
     chatMessages.scrollTop=chatMessages.scrollHeight;
 }
 
-sendChat.addEventListener("click",sendMessage);
+chatSend.addEventListener("click",sendChat);
 
-chatInput.addEventListener("keydown",function(e){
-
+chatInput.addEventListener("keydown",e=>{
     if(e.key==="Enter"){
-        sendMessage();
+        sendChat();
     }
-
 });
 
 
 /* =====================================================
-   IMAGE UPLOAD
+   IMAGE PREVIEW
 ===================================================== */
 
-const chartInput=document.getElementById("chartInput");
-const preview=document.getElementById("preview");
-const fileName=document.getElementById("fileName");
+const chartUpload=document.getElementById("chartUpload");
+const chartPreview=document.getElementById("chartPreview");
+const uploadName=document.getElementById("uploadName");
 
-chartInput.addEventListener("change",function(){
+chartUpload.addEventListener("change",function(){
 
     const file=this.files[0];
 
     if(!file)return;
 
-    fileName.textContent=file.name;
+    uploadName.textContent=file.name;
 
     const reader=new FileReader();
 
-    reader.onload=function(e){
+    reader.onload=function(event){
 
-        preview.src=e.target.result;
-
-        preview.style.display="block";
+        chartPreview.src=event.target.result;
+        chartPreview.style.display="block";
 
     };
 
@@ -1212,77 +2039,166 @@ chartInput.addEventListener("change",function(){
 ===================================================== */
 
 const aiInput=document.getElementById("aiInput");
-const sendAI=document.getElementById("sendAI");
+const aiSend=document.getElementById("aiSend");
 const aiMessages=document.getElementById("aiMessages");
 
-function sendAIMessage(){
+function addAIMessage(text,isUser=false){
 
-    const text=aiInput.value.trim();
+    const box=document.createElement("div");
 
-    if(!text)return;
+    box.className="ai-message"+(isUser?" you":"");
 
-    const user=document.createElement("div");
+    const name=document.createElement("div");
 
-    user.className="ai-message user";
+    name.className="ai-name";
+    name.textContent=isUser?"YOU":"GOLDLAB AI";
 
-    user.innerHTML=`
+    const body=document.createElement("div");
 
-        <div class="ai-name">
-        YOU
-        </div>
+    body.textContent=text;
 
-        <div></div>
+    box.appendChild(name);
+    box.appendChild(body);
 
-    `;
-
-    user.querySelector("div:last-child").textContent=text;
-
-    aiMessages.appendChild(user);
-
-    aiInput.value="";
+    aiMessages.appendChild(box);
 
     aiMessages.scrollTop=aiMessages.scrollHeight;
+}
 
+function answerAI(question){
 
-    setTimeout(function(){
+    const q=question.toLowerCase();
 
-        const reply=document.createElement("div");
+    if(q.includes("fvg") || q.includes("fair value")){
 
-        reply.className="ai-message";
+        return "An FVG is an imbalance created by strong displacement. Study its location together with market structure and liquidity rather than treating every FVG as an automatic entry.";
 
-        reply.innerHTML=`
+    }
 
-        <div class="ai-name">
-        GOLD AI
-        </div>
+    if(q.includes("liquidity")){
 
-        <div>
-        I can help you study XAUUSD, liquidity,
-        market structure, BOS, CHOCH, FVG and
-        Order Blocks. For real AI-generated answers,
-        this frontend must be connected to a secure
-        backend API.
-        </div>
+        return "Liquidity can be studied around important highs, lows and obvious price levels. A liquidity sweep is only one piece of the setup; wait for your structural confirmation.";
 
-        `;
+    }
 
-        aiMessages.appendChild(reply);
+    if(q.includes("bos")){
 
-        aiMessages.scrollTop=aiMessages.scrollHeight;
+        return "BOS means Break of Structure. It is commonly used to describe price breaking an important structural high or low in the direction of the developing move.";
 
-    },500);
+    }
+
+    if(q.includes("choch")){
+
+        return "CHOCH means Change of Character. Traders often use it to describe a potential shift in market behaviour or structure.";
+
+    }
+
+    if(q.includes("order block") || q.includes("ob")){
+
+        return "An Order Block is a concept used to identify an area associated with a strong price move. Context, displacement and structure matter more than simply marking every candle as an OB.";
+
+    }
+
+    if(q.includes("risk")){
+
+        return "Risk management should be defined before entry. Decide your invalidation level, calculate position size from your allowed risk, and avoid increasing risk after a loss.";
+
+    }
+
+    return "I can help you study XAUUSD concepts such as liquidity, FVG, Order Blocks, BOS, CHOCH, market structure, execution and risk management. Ask me a specific question.";
 
 }
 
-sendAI.addEventListener("click",sendAIMessage);
+function sendAI(){
 
-aiInput.addEventListener("keydown",function(e){
+    const question=aiInput.value.trim();
+
+    if(!question)return;
+
+    addAIMessage(question,true);
+
+    aiInput.value="";
+
+    setTimeout(()=>{
+
+        addAIMessage(answerAI(question));
+
+    },350);
+
+}
+
+aiSend.addEventListener("click",sendAI);
+
+aiInput.addEventListener("keydown",e=>{
 
     if(e.key==="Enter"){
-        sendAIMessage();
+        sendAI();
     }
 
 });
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+const searchInput=document.getElementById("searchInput");
+
+searchInput.addEventListener("keydown",e=>{
+
+    if(e.key!=="Enter")return;
+
+    const value=searchInput.value.toLowerCase().trim();
+
+    if(!value)return;
+
+    if(value.includes("fvg") ||
+       value.includes("liquidity") ||
+       value.includes("bos") ||
+       value.includes("choch") ||
+       value.includes("order")){
+
+        openPage("analysis");
+
+    }else if(value.includes("video")){
+
+        openPage("videos");
+
+    }else if(value.includes("chat")){
+
+        openPage("chat");
+
+    }else if(value.includes("ai")){
+
+        openPage("ai");
+
+    }else{
+
+        openPage("dashboard");
+
+    }
+
+});
+
+
+/* =====================================================
+   CHECKLIST PERSISTENCE
+===================================================== */
+
+document.querySelectorAll(".check input").forEach((checkbox,index)=>{
+
+    const key="goldlab_check_"+index;
+
+    checkbox.checked=localStorage.getItem(key)==="true";
+
+    checkbox.addEventListener("change",()=>{
+
+        localStorage.setItem(
+            key,
+            checkbox.checked
+        );
+
+    });
 
 });
 
