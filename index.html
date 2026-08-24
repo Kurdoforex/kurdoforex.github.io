@@ -3,694 +3,1229 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XAUUSD • Gold SMC Academy & Ultimate Terminal</title>
+
+<title>XAUUSD • Gold SMC Academy</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-html, body {
-  width: 100%;
-  height: 100%;
-  background: #050505;
-  color: #f5f5f5;
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.6;
-  overflow-x: hidden;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-header {
-  padding: 15px 3%;
-  border-bottom: 1px solid #222;
-  background: #080808;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+html,body{
+    width:100%;
+    min-height:100%;
+    background:#050505;
+    color:#f5f5f5;
+    font-family:Arial,Helvetica,sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
 }
 
-.navbar {
-  max-width: 1800px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+header{
+    padding:15px 3%;
+    border-bottom:1px solid #222;
+    background:#080808;
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
-.logo {
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 1px;
+.navbar{
+    max-width:1800px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    gap:25px;
 }
 
-.logo span { color: #eab308; }
-
-nav {
-  display: flex;
-  gap: 10px;
+.logo{
+    flex-shrink:0;
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:1px;
 }
 
-.nav-btn {
-  background: transparent;
-  border: 1px solid #222;
-  color: #aaa;
-  padding: 8px 16px;
-  font-size: 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: .2s;
+.logo span{
+    color:#eab308;
 }
 
-.nav-btn:hover {
-  color: #fff;
-  border-color: #444;
+/* SCROLLABLE TOP MENU */
+
+nav{
+    display:flex;
+    gap:9px;
+    overflow-x:auto;
+    scrollbar-width:none;
+    white-space:nowrap;
+    flex:1;
+    padding-bottom:2px;
 }
 
-.nav-btn.active {
-  color: #000;
-  background: #eab308;
-  border-color: #ca8a04;
-  font-weight: bold;
+nav::-webkit-scrollbar{
+    display:none;
 }
 
-/* STRUTTURA A PAGINE INTERE (FULL PAGE TABS) */
-.tab-page {
-  display: none;
-  width: 100%;
-  min-height: calc(100vh - 120px);
-  padding: 30px 4%;
+.nav-btn{
+    flex-shrink:0;
+    background:transparent;
+    border:1px solid #222;
+    color:#aaa;
+    padding:9px 15px;
+    font-size:13px;
+    border-radius:6px;
+    cursor:pointer;
+    transition:.2s;
 }
 
-.tab-page.active {
-  display: block;
+.nav-btn:hover{
+    color:#fff;
+    border-color:#444;
 }
 
-/* LIVE CHART FULLSCREEN */
-#page-chart {
-  padding: 10px 1% !important;
-  height: calc(100vh - 80px);
+.nav-btn.active{
+    color:#000;
+    background:#eab308;
+    border-color:#ca8a04;
+    font-weight:bold;
 }
 
-.full-chart-container {
-  width: 100%;
-  height: 100%;
-  border: 1px solid #202020;
-  border-radius: 8px;
-  overflow: hidden;
+/* PAGES */
+
+.tab-page{
+    display:none;
+    width:100%;
+    min-height:calc(100vh - 120px);
+    padding:30px 4%;
 }
 
-/* TITOLI PAGINE */
-.page-title {
-  font-size: 30px;
-  margin-bottom: 6px;
-  color: #fff;
+.tab-page.active{
+    display:block;
 }
 
-.page-subtitle {
-  color: #71717a;
-  margin-bottom: 25px;
-  font-size: 14px;
+/* CHART */
+
+#page-chart{
+    padding:10px 1%;
+    height:calc(100vh - 120px);
 }
 
-/* REGOLE DI STRATEGIA */
-.rules-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+.full-chart-container{
+    width:100%;
+    height:100%;
+    min-height:600px;
+    border:1px solid #202020;
+    border-radius:8px;
+    overflow:hidden;
 }
 
-.rule-card {
-  background: #0b0b0b;
-  border: 1px solid #202020;
-  padding: 25px;
-  border-radius: 10px;
+/* TITLES */
+
+.page-title{
+    font-size:30px;
+    margin-bottom:6px;
+    color:#fff;
 }
 
-.rule-card h3 {
-  color: #eab308;
-  margin-bottom: 10px;
-  font-size: 18px;
+.page-subtitle{
+    color:#71717a;
+    margin-bottom:25px;
+    font-size:14px;
 }
 
-/* BREAKDOWN E GRAFICI SMC VETTORIALI */
-.breakdown-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-  gap: 25px;
+/* GRIDS */
+
+.rules-grid,
+.breakdown-grid,
+.video-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
 }
 
-.breakdown-card {
-  background: #0b0b0b;
-  border: 1px solid #202020;
-  border-radius: 10px;
-  overflow: hidden;
+/* RULES */
+
+.rule-card{
+    background:#0b0b0b;
+    border:1px solid #202020;
+    padding:25px;
+    border-radius:10px;
 }
 
-.svg-chart-container {
-  width: 100%;
-  height: 280px;
-  background: #0c0d10;
-  border-bottom: 1px solid #202020;
+.rule-card h3{
+    color:#eab308;
+    margin-bottom:10px;
+    font-size:18px;
 }
 
-.breakdown-info {
-  padding: 20px;
+.rule-card p{
+    color:#aaa;
 }
 
-.tag {
-  display: inline-block;
-  background: rgba(234, 179, 8, 0.15);
-  color: #fde047;
-  padding: 3px 8px;
-  border-radius: 4px;
-  font-size: 11px;
-  font-weight: bold;
-  margin-bottom: 8px;
+/* BREAKDOWNS */
+
+.breakdown-card{
+    background:#0b0b0b;
+    border:1px solid #202020;
+    border-radius:10px;
+    overflow:hidden;
 }
 
-/* VIDEO LESSONS */
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 25px;
+.svg-chart-container{
+    width:100%;
+    height:280px;
+    background:#0c0d10;
+    border-bottom:1px solid #202020;
 }
 
-.video-card {
-  background: #0b0b0b;
-  border: 1px solid #202020;
-  border-radius: 10px;
-  overflow: hidden;
+.breakdown-info{
+    padding:20px;
 }
 
-.video-card iframe {
-  width: 100%;
-  height: 300px;
-  border: none;
+.breakdown-info h4{
+    margin:8px 0;
+    font-size:18px;
 }
 
-.video-content {
-  padding: 18px;
+.breakdown-info p{
+    color:#888;
 }
 
-/* CHAT ROOM & MODERAZIONE */
-.chat-window {
-  background: #0b0b0b;
-  border: 1px solid #202020;
-  border-radius: 10px;
-  height: 72vh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+.tag{
+    display:inline-block;
+    background:rgba(234,179,8,.15);
+    color:#fde047;
+    padding:3px 8px;
+    border-radius:4px;
+    font-size:11px;
+    font-weight:bold;
+    margin-bottom:8px;
 }
 
-.chat-bar {
-  background: #111;
-  padding: 14px 20px;
-  border-bottom: 1px solid #202020;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* VIDEO */
+
+.video-card{
+    background:#0b0b0b;
+    border:1px solid #202020;
+    border-radius:10px;
+    overflow:hidden;
 }
 
-.online-indicator {
-  color: #22c55e;
-  font-size: 13px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.video-card iframe{
+    width:100%;
+    height:280px;
+    border:none;
+    display:block;
 }
 
-.online-dot {
-  width: 9px;
-  height: 9px;
-  background: #22c55e;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #22c55e;
+.video-content{
+    padding:18px;
 }
 
-.chat-logs {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  background: #060606;
+.video-content h4{
+    margin-bottom:7px;
 }
 
-.chat-bubble {
-  background: #111;
-  border: 1px solid #1f1f1f;
-  padding: 10px 15px;
-  border-radius: 6px;
-  max-width: 85%;
+.video-content p{
+    color:#888;
+    font-size:14px;
 }
 
-.chat-bubble.owner-bubble {
-  border-color: #ca8a04;
-  background: rgba(202, 138, 4, 0.08);
+/* COMMUNITY CHAT */
+
+.chat-window{
+    background:#0b0b0b;
+    border:1px solid #202020;
+    border-radius:10px;
+    height:72vh;
+    min-height:500px;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
 }
 
-.user-tag {
-  font-weight: bold;
-  font-size: 12px;
-  color: #eab308;
-  margin-bottom: 3px;
+.chat-bar{
+    background:#111;
+    padding:14px 20px;
+    border-bottom:1px solid #202020;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-.badge-owner {
-  background: #ca8a04;
-  color: #000;
-  padding: 2px 5px;
-  border-radius: 3px;
-  font-size: 10px;
-  font-weight: 900;
-  margin-left: 4px;
+.online-indicator{
+    color:#22c55e;
+    font-size:12px;
+    font-weight:bold;
+    display:flex;
+    align-items:center;
+    gap:8px;
 }
 
-.badge-mod {
-  background: #3b82f6;
-  color: #fff;
-  padding: 2px 5px;
-  border-radius: 3px;
-  font-size: 10px;
-  margin-left: 4px;
+.online-dot{
+    width:8px;
+    height:8px;
+    background:#22c55e;
+    border-radius:50%;
+    box-shadow:0 0 8px #22c55e;
 }
 
-.chat-controls {
-  padding: 15px;
-  background: #111;
-  border-top: 1px solid #202020;
-  display: flex;
-  gap: 10px;
+.chat-logs{
+    flex:1;
+    padding:20px;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    background:#060606;
 }
 
-.chat-controls input {
-  flex: 1;
-  background: #050505;
-  border: 1px solid #252525;
-  padding: 12px;
-  color: #fff;
-  border-radius: 6px;
-  outline: none;
+.chat-bubble{
+    background:#111;
+    border:1px solid #1f1f1f;
+    padding:10px 15px;
+    border-radius:6px;
+    max-width:85%;
 }
 
-.chat-controls input:focus { border-color: #eab308; }
-
-.chat-controls button {
-  background: #ca8a04;
-  color: #000;
-  border: none;
-  padding: 0 25px;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
+.chat-bubble.owner-bubble{
+    border-color:#ca8a04;
+    background:rgba(202,138,4,.08);
+    align-self:flex-end;
 }
 
-/* AI ASSISTANT */
-.ai-workspace {
-  background: #0b0b0b;
-  border: 1px solid #202020;
-  border-radius: 10px;
-  height: 72vh;
-  display: flex;
-  flex-direction: column;
+.user-tag{
+    font-weight:bold;
+    font-size:12px;
+    color:#eab308;
+    margin-bottom:3px;
 }
 
-.ai-output {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.badge-owner{
+    background:#ca8a04;
+    color:#000;
+    padding:2px 5px;
+    border-radius:3px;
+    font-size:10px;
+    font-weight:900;
 }
 
-.ai-msg {
-  background: #141414;
-  padding: 14px;
-  border-radius: 6px;
-  border-left: 4px solid #ca8a04;
+.badge-mod{
+    background:#3b82f6;
+    color:#fff;
+    padding:2px 5px;
+    border-radius:3px;
+    font-size:10px;
 }
 
-.upload-box {
-  padding: 15px;
-  background: #111;
-  border-top: 1px solid #202020;
-  display: flex;
-  gap: 12px;
-  align-items: center;
+.chat-controls{
+    padding:15px;
+    background:#111;
+    border-top:1px solid #202020;
+    display:flex;
+    gap:10px;
 }
 
-.file-input-btn {
-  background: #222;
-  color: #fff;
-  padding: 10px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  border: 1px solid #333;
-  font-size: 12px;
+.chat-controls input{
+    flex:1;
+    background:#050505;
+    border:1px solid #252525;
+    padding:12px;
+    color:#fff;
+    border-radius:6px;
+    outline:none;
 }
 
-footer {
-  border-top: 1px solid #202020;
-  padding: 18px;
-  text-align: center;
-  font-size: 12px;
-  color: #555;
-  background: #040404;
+.chat-controls input:focus{
+    border-color:#eab308;
+}
+
+.chat-controls button{
+    background:#ca8a04;
+    color:#000;
+    border:none;
+    padding:0 25px;
+    border-radius:6px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* AI */
+
+.ai-layout{
+    display:grid;
+    grid-template-columns:1fr 1.3fr;
+    gap:20px;
+}
+
+.ai-panel{
+    background:#0b0b0b;
+    border:1px solid #202020;
+    border-radius:10px;
+    padding:20px;
+}
+
+.ai-panel h3{
+    margin-bottom:8px;
+}
+
+.ai-panel > p{
+    color:#888;
+    font-size:14px;
+}
+
+.ai-workspace{
+    margin-top:20px;
+    background:#090909;
+    border:1px solid #202020;
+    border-radius:10px;
+    height:65vh;
+    min-height:500px;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+}
+
+.ai-output{
+    flex:1;
+    padding:20px;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.ai-msg{
+    background:#141414;
+    padding:14px;
+    border-radius:7px;
+    border-left:4px solid #ca8a04;
+}
+
+.ai-msg.user{
+    border-left-color:#3b82f6;
+    align-self:flex-end;
+    max-width:85%;
+}
+
+.ai-msg p{
+    color:#ddd;
+}
+
+.ai-input-area{
+    padding:14px;
+    background:#111;
+    border-top:1px solid #202020;
+    display:flex;
+    gap:10px;
+}
+
+.ai-input-area input{
+    flex:1;
+    background:#050505;
+    border:1px solid #252525;
+    padding:12px;
+    color:#fff;
+    border-radius:6px;
+    outline:none;
+}
+
+.ai-input-area button{
+    background:#eab308;
+    color:#000;
+    border:0;
+    padding:0 22px;
+    border-radius:6px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* IMAGE UPLOAD */
+
+.upload-box{
+    margin-top:20px;
+    border:1px dashed #333;
+    border-radius:8px;
+    padding:25px;
+    text-align:center;
+}
+
+.file-input-btn{
+    display:inline-block;
+    background:#eab308;
+    color:#000;
+    padding:11px 16px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+#chartPreview{
+    display:none;
+    width:100%;
+    max-height:280px;
+    object-fit:contain;
+    margin-top:20px;
+    border-radius:7px;
+}
+
+/* ONLINE STATUS */
+
+.online-real-note{
+    color:#555;
+    font-size:10px;
+    margin-top:4px;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid #202020;
+    padding:25px 18px;
+    text-align:center;
+    font-size:12px;
+    color:#555;
+    background:#040404;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .navbar{
+        display:block;
+    }
+
+    .logo{
+        margin-bottom:12px;
+    }
+
+    nav{
+        width:100%;
+    }
+
+    .tab-page{
+        padding:25px 15px;
+    }
+
+    #page-chart{
+        padding:5px;
+        height:calc(100vh - 120px);
+    }
+
+    .full-chart-container{
+        min-height:500px;
+    }
+
+    .ai-layout{
+        grid-template-columns:1fr;
+    }
+
+    .video-card iframe{
+        height:220px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- TICKER TAPE PREZZI REALI -->
+<!-- =========================================================
+     TRADINGVIEW TICKER
+========================================================= -->
+
 <div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-  {
-  "symbols": [
-    {"proName": "OANDA:XAUUSD", "title": "XAUUSD Spot"},
-    {"proName": "COMEX:GC1!", "title": "Gold Futures"},
-    {"proName": "FX_IDC:XAUUSD", "title": "Gold Rate"}
-  ],
-  "colorTheme": "dark",
-  "isTransparent": false,
-  "displayMode": "adaptive",
-  "locale": "en"
-}
-  </script>
-</div>
 
-<header>
-  <div class="navbar">
-    <div class="logo">XAUUSD <span>•</span> GOLD TERMINAL</div>
-    <nav>
-      <button class="nav-btn active" onclick="switchTab('page-chart', this)">Live Chart</button>
-      <button class="nav-btn" onclick="switchTab('page-breakdowns', this)">Real Breakdowns</button>
-      <button class="nav-btn" onclick="switchTab('page-rules', this)">Core Rules</button>
-      <button class="nav-btn" onclick="switchTab('page-videos', this)">Video Academy</button>
-      <button class="nav-btn" onclick="switchTab('page-chat', this)">Live Chat</button>
-      <button class="nav-btn" onclick="switchTab('page-ai', this)">AI Assistant</button>
-    </nav>
-  </div>
-</header>
+<div class="tradingview-widget-container__widget"></div>
 
-<!-- PAGINA 1: GRAFICO LIVE INTERO -->
-<div id="page-chart" class="tab-page active">
-  <div class="full-chart-container">
-    <div class="tradingview-widget-container" style="height:100%;width:100%">
-      <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-      {
-        "autosize": true,
-        "symbol": "OANDA:XAUUSD",
-        "interval": "15",
-        "timezone": "Etc/UTC",
-        "theme": "dark",
-        "style": "1",
-        "locale": "en",
-        "backgroundColor": "#050505",
-        "gridColor": "rgba(32, 32, 32, 1)",
-        "hide_side_toolbar": false,
-        "allow_symbol_change": true,
-        "save_image": true
-      }
-      </script>
-    </div>
-  </div>
-</div>
+<script
+type="text/javascript"
+src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+async>
 
-<!-- PAGINA 2: BREAKDOWN E GRAFICI SMC -->
-<div id="page-breakdowns" class="tab-page">
-  <h1 class="page-title">Real Market Breakdowns</h1>
-  <p class="page-subtitle">Analisi e prove visive sui movimenti istituzionali di XAUUSD.</p>
-
-  <div class="breakdown-grid">
-    <div class="breakdown-card">
-      <div class="svg-chart-container">
-        <svg width="100%" height="100%" viewBox="0 0 500 250">
-          <line x1="20" y1="75" x2="480" y2="75" stroke="#ca8a04" stroke-dasharray="4" stroke-width="1"/>
-          <text x="25" y="68" fill="#ca8a04" font-size="11" font-weight="bold">Asian High (Buy-Side Liquidity)</text>
-          
-          <path d="M 40 160 L 90 120 L 140 140 L 210 65 L 250 180 L 300 150 L 380 230" fill="none" stroke="#22c55e" stroke-width="2"/>
-          <path d="M 210 65 L 250 180 L 300 150 L 450 240" fill="none" stroke="#ef4444" stroke-width="2"/>
-
-          <circle cx="210" cy="65" r="5" fill="#eab308"/>
-          <text x="220" y="60" fill="#fde047" font-size="11" font-weight="bold">LIQUIDITY SWEEP</text>
-
-          <line x1="140" y1="140" x2="280" y2="140" stroke="#3b82f6" stroke-dasharray="2" stroke-width="1"/>
-          <text x="250" y="135" fill="#3b82f6" font-size="10" font-weight="bold">CHOCH</text>
-        </svg>
-      </div>
-      <div class="breakdown-info">
-        <span class="tag">XAUUSD • London Open</span>
-        <h4>Asian High Liquidity Sweep & CHOCH</h4>
-        <p>Presa di liquidità sui massimi asiatici, seguita da cambio di struttura 5m e prosecuzione ribassista.</p>
-      </div>
-    </div>
-
-    <div class="breakdown-card">
-      <div class="svg-chart-container">
-        <svg width="100%" height="100%" viewBox="0 0 500 250">
-          <rect x="230" y="135" width="85" height="30" fill="rgba(34, 197, 94, 0.2)" stroke="#22c55e"/>
-          <text x="235" y="154" fill="#22c55e" font-size="10" font-weight="bold">Order Block / FVG</text>
-
-          <path d="M 30 180 L 80 130 L 130 150 L 220 50" fill="none" stroke="#22c55e" stroke-width="2"/>
-          <line x1="80" y1="130" x2="240" y2="130" stroke="#ffffff" stroke-dasharray="3"/>
-          <text x="140" y="123" fill="#ffffff" font-size="10">BOS (Break of Structure)</text>
-
-          <path d="M 220 50 L 260 142 L 440 30" fill="none" stroke="#22c55e" stroke-width="2"/>
-          <circle cx="260" cy="142" r="4" fill="#22c55e"/>
-          <text x="270" y="142" fill="#22c55e" font-size="10" font-weight="bold">Sniper Entry</text>
-        </svg>
-      </div>
-      <div class="breakdown-info">
-        <span class="tag">XAUUSD • 15m Chart</span>
-        <h4>Bullish Order Block & FVG Continuation</h4>
-        <p>Rottura della struttura (BOS) con retest sull'Order Block ed espansione rialzista.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- PAGINA 3: REGOLE E STRATEGIA -->
-<div id="page-rules" class="tab-page">
-  <h1 class="page-title">XAUUSD Core Execution Rules</h1>
-  <p class="page-subtitle">Regole fondamentali per il trading su Oro basato su concetti SMC.</p>
-  
-  <div class="rules-grid">
-    <div class="rule-card">
-      <h3>1. Liquidity Sweeps</h3>
-      <p>Individua i livelli di liquidità sopra i massimi o sotto i minimi asiatici prima di valutare qualsiasi operazione.</p>
-    </div>
-    <div class="rule-card">
-      <h3>2. Change of Character (CHOCH)</h3>
-      <p>Attendi una conferma su TimeFrame 1m/5m per validare il cambio di direzione istituzionale.</p>
-    </div>
-    <div class="rule-card">
-      <h3>3. Fair Value Gap (FVG) Entry</h3>
-      <p>Posiziona gli ordini sul riequilibrio del 50% (Consequent Encroachment) lasciati dai movimenti d'impulso.</p>
-    </div>
-  </div>
-</div>
-
-<!-- PAGINA 4: VIDEO ACADEMY (15-20 MIN) -->
-<div id="page-videos" class="tab-page">
-  <h1 class="page-title">XAUUSD Video Academy</h1>
-  <p class="page-subtitle">Video lezioni approfondite sul trading istituzionale SMC.</p>
-
-  <div class="video-grid">
-    <div class="video-card">
-      <iframe src="https://www.youtube-nocookie.com/embed/rZnjkZ_JV2o" allowfullscreen></iframe>
-      <div class="video-content">
-        <h4>Liquidity Sweep Masterclass (SMC)</h4>
-        <p>Lezione dettagliata sulle prese di liquidità durante la sessione di Londra e New York.</p>
-      </div>
-    </div>
-    <div class="video-card">
-      <iframe src="https://www.youtube-nocookie.com/embed/2Ow2b8X0GEg" allowfullscreen></iframe>
-      <div class="video-content">
-        <h4>Fair Value Gap (FVG) Strategy</h4>
-        <p>Guida completa all'individuazione degli squilibri di prezzo per ingressi ad alta precisione.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- PAGINA 5: LIVE TRADERS CHAT -->
-<div id="page-chat" class="tab-page">
-  <h1 class="page-title">Gold Traders Room</h1>
-  <p class="page-subtitle">Comandi di moderazione: <code>/mute [utente]</code>, <code>/unmute [utente]</code>, <code>/mod [utente]</code></p>
-
-  <div class="chat-window">
-    <div class="chat-bar">
-      <h3>Gold Community Room</h3>
-      <div class="online-indicator">
-        <div class="online-dot"></div>
-        <span id="liveUserCount">24</span> Traders Online
-      </div>
-    </div>
-    
-    <div class="chat-logs" id="chatLogs">
-      <div class="chat-bubble">
-        <div class="user-tag">Trader_Alex <span class="badge-mod">MOD</span></div>
-        <div>Presa di liquidità confermata a $2041. Attenti alla distribuzione in sessione NY.</div>
-      </div>
-    </div>
-
-    <div class="chat-controls">
-      <input type="text" id="chatMsgInput" placeholder="Scrivi un messaggio o un comando..." onkeypress="onChatKey(event)">
-      <button onclick="dispatchMessage()">Invia</button>
-    </div>
-  </div>
-</div>
-
-<!-- PAGINA 6: AI CHART ASSISTANT -->
-<div id="page-ai" class="tab-page">
-  <h1 class="page-title">AI Chart Assistant</h1>
-  <p class="page-subtitle">Carica lo screenshot del tuo grafico XAUUSD per analizzare la struttura SMC.</p>
-
-  <div class="ai-workspace">
-    <div class="ai-output" id="aiOutput">
-      <div class="ai-msg">
-        <strong>Gold AI Assistant:</strong> Carica un'immagine del grafico o scrivi la tua domanda qui sotto per analizzare BOS, Liquidity Sweep e Order Block.
-      </div>
-    </div>
-
-    <div class="upload-box">
-      <label class="file-input-btn">
-        📷 Carica Immagine
-        <input type="file" id="chartFile" accept="image/*" style="display:none;" onchange="handleFileAttach(event)">
-      </label>
-      <span id="fileNameDisplay" style="font-size:12px; color:#aaa;">Nessun file selezionato</span>
-      <input type="text" id="aiQuery" placeholder="Fai una domanda sull'analisi..." style="flex:1; background:#050505; border:1px solid #252525; padding:10px; color:#fff; border-radius:6px;">
-      <button onclick="askAI()" style="background:#ca8a04; color:#000; border:none; padding:10px 20px; border-radius:6px; font-weight:bold; cursor:pointer;">Analizza</button>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <p>&copy; 2026 XAUUSD Gold SMC Terminal. All rights reserved.</p>
-</footer>
-
-<script>
-// SWITCH TABS
-function switchTab(pageId, btn) {
-  document.querySelectorAll('.tab-page').forEach(page => page.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  
-  document.getElementById(pageId).classList.add('active');
-  btn.classList.add('active');
+{
+"symbols":[
+{"proName":"OANDA:XAUUSD","title":"XAUUSD Spot"},
+{"proName":"COMEX:GC1!","title":"Gold Futures"},
+{"proName":"FX_IDC:XAUUSD","title":"Gold Rate"}
+],
+"colorTheme":"dark",
+"isTransparent":false,
+"displayMode":"adaptive",
+"locale":"en"
 }
 
-// UTENTI ONLINE DINAMICI
-let liveCount = 24;
-setInterval(() => {
-  liveCount += Math.floor(Math.random() * 3) - 1;
-  if(liveCount < 16) liveCount = 16;
-  document.getElementById('liveUserCount').innerText = liveCount;
-}, 4000);
-
-// GESTIONE CHAT & COMANDI
-let mutedUsers = new Set();
-let moderators = new Set(["Trader_Alex"]);
-
-function onChatKey(e) {
-  if (e.key === 'Enter') dispatchMessage();
-}
-
-function dispatchMessage() {
-  const input = document.getElementById('chatMsgInput');
-  const logs = document.getElementById('chatLogs');
-  const raw = input.value.trim();
-  
-  if (!raw) return;
-
-  if (raw.startsWith('/')) {
-    const parts = raw.split(' ');
-    const cmd = parts[0].toLowerCase();
-    const target = parts[1];
-
-    if (cmd === '/mute' && target) {
-      mutedUsers.add(target);
-      appendSysMsg(`L'utente <strong>${target}</strong> è stato silenziato.`);
-    } else if (cmd === '/unmute' && target) {
-      mutedUsers.delete(target);
-      appendSysMsg(`L'utente <strong>${target}</strong> è stato riattivato.`);
-    } else if (cmd === '/mod' && target) {
-      moderators.add(target);
-      appendSysMsg(`L'utente <strong>${target}</strong> è ora un Moderatore.`);
-    } else {
-      appendSysMsg("Comando non riconosciuto. Usa: /mute, /unmute, /mod");
-    }
-    input.value = '';
-    return;
-  }
-
-  const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-  const bubble = document.createElement('div');
-  bubble.className = 'chat-bubble owner-bubble';
-  bubble.innerHTML = `
-    <div class="user-tag">TU <span class="badge-owner">OWNER</span> <span style="font-size:10px; color:#555; margin-left:6px;">${time}</span></div>
-    <div>${raw}</div>
-  `;
-
-  logs.appendChild(bubble);
-  input.value = '';
-  logs.scrollTop = logs.scrollHeight;
-}
-
-function appendSysMsg(htmlContent) {
-  const logs = document.getElementById('chatLogs');
-  const sys = document.createElement('div');
-  sys.className = 'chat-bubble';
-  sys.style.borderColor = '#ca8a04';
-  sys.style.background = 'rgba(234, 179, 8, 0.05)';
-  sys.innerHTML = `<div class="user-tag" style="color:#fde047;">SYSTEM BOT</div><div>${htmlContent}</div>`;
-  logs.appendChild(sys);
-  logs.scrollTop = logs.scrollHeight;
-}
-
-// GESTIONE AI ASSISTANT & UPLOAD
-let selectedFile = null;
-
-function handleFileAttach(e) {
-  selectedFile = e.target.files[0];
-  if(selectedFile) {
-    document.getElementById('fileNameDisplay').innerText = selectedFile.name;
-  }
-}
-
-function askAI() {
-  const qInput = document.getElementById('aiQuery');
-  const out = document.getElementById('aiOutput');
-  const text = qInput.value.trim();
-
-  if(!text && !selectedFile) return;
-
-  const userMsg = document.createElement('div');
-  userMsg.className = 'ai-msg';
-  userMsg.style.borderLeftColor = '#3b82f6';
-  userMsg.innerHTML = `<strong>Utente:</strong> ${text} ${selectedFile ? `<br><em>[Immagine allegata: ${selectedFile.name}]</em>` : ''}`;
-  out.appendChild(userMsg);
-
-  setTimeout(() => {
-    const aiMsg = document.createElement('div');
-    aiMsg.className = 'ai-msg';
-    aiMsg.innerHTML = `<strong>Gold AI Assistant:</strong> Analisi del grafico completata. 
-    <br>• <strong>Liquidity Sweep:</strong> Individuata zona di liquidità sui massimi/minimi.
-    <br>• <strong>Struttura:</strong> Confermato CHOCH 5m. Ingressi consigliati sul 50% del FVG.`;
-    out.appendChild(aiMsg);
-    out.scrollTop = out.scrollHeight;
-  }, 1000);
-
-  qInput.value = '';
-  document.getElementById('fileNameDisplay').innerText = 'Nessun file selezionato';
-  selectedFile = null;
-}
 </script>
 
-</body>
-</html>
+</div>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+<div class="navbar">
+
+<div class="logo">
+XAUUSD <span>•</span> GOLD SMC ACADEMY
+</div>
+
+<nav>
+
+<button class="nav-btn active"
+onclick="switchTab('page-chart',this)">
+Live Chart
+</button>
+
+<button class="nav-btn"
+onclick="switchTab('page-breakdowns',this)">
+Market Analysis
+</button>
+
+<button class="nav-btn"
+onclick="switchTab('page-rules',this)">
+Core Rules
+</button>
+
+<button class="nav-btn"
+onclick="switchTab('page-videos',this)">
+Video Academy
+</button>
+
+<button class="nav-btn"
+onclick="switchTab('page-chat',this)">
+Live Community
+</button>
+
+<button class="nav-btn"
+onclick="switchTab('page-ai',this)">
+AI Assistant
+</button>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<!-- =========================================================
+     PAGE 1 — LIVE GOLD CHART
+========================================================= -->
+
+<div id="page-chart" class="tab-page active">
+
+<div class="full-chart-container">
+
+<div class="tradingview-widget-container"
+style="height:100%;width:100%">
+
+<div
+class="tradingview-widget-container__widget"
+style="height:100%;width:100%">
+</div>
+
+<script
+type="text/javascript"
+src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
+async>
+
+{
+"autosize":true,
+"symbol":"OANDA:XAUUSD",
+"interval":"15",
+"timezone":"Etc/UTC",
+"theme":"dark",
+"style":"1",
+"locale":"en",
+"backgroundColor":"#050505",
+"gridColor":"rgba(32,32,32,1)",
+"hide_side_toolbar":false,
+"allow_symbol_change":true,
+"save_image":true
+}
+
+</script>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     PAGE 2 — MARKET ANALYSIS
+========================================================= -->
+
+<div id="page-breakdowns" class="tab-page">
+
+<h1 class="page-title">
+Real Gold Market Analysis
+</h1>
+
+<p class="page-subtitle">
+Educational XAUUSD examples based on Smart Money Concepts.
+</p>
+
+
+<div class="breakdown-grid">
+
+
+<!-- ANALYSIS 1 -->
+
+<div class="breakdown-card">
+
+<div class="svg-chart-container">
+
+<svg width="100%" height="100%" viewBox="0 0 500 250">
+
+<rect width="500" height="250" fill="#0c0d10"/>
+
+<line
+x1="20"
+y1="75"
+x2="480"
+y2="75"
+stroke="#ca8a04"
+stroke-dasharray="4"/>
+
+<text
+x="25"
+y="65"
+fill="#ca8a04"
+font-size="11"
+font-weight="bold">
+ASIAN HIGH — BUY-SIDE LIQUIDITY
+</text>
+
+<path
+d="M40 160 L90 120 L140 140 L210 65 L250 180 L300 150 L380 230"
+fill="none"
+stroke="#22c55e"
+stroke-width="2"/>
+
+<path
+d="M210 65 L250 180 L300 150 L450 240"
+fill="none"
+stroke="#ef4444"
+stroke-width="2"/>
+
+<circle
+cx="210"
+cy="65"
+r="5"
+fill="#eab308"/>
+
+<text
+x="220"
+y="60"
+fill="#fde047"
+font-size="11"
+font-weight="bold">
+LIQUIDITY SWEEP
+</text>
+
+<line
+x1="140"
+y1="140"
+x2="280"
+y2="140"
+stroke="#3b82f6"
+stroke-dasharray="2"/>
+
+<text
+x="250"
+y="135"
+fill="#3b82f6"
+font-size="10"
+font-weight="bold">
+CHOCH
+</text>
+
+</svg>
+
+</div>
+
+<div class="breakdown-info">
+
+<span class="tag">
+XAUUSD • LIQUIDITY
+</span>
+
+<h4>
+Asian High Liquidity Sweep & CHOCH
+</h4>
+
+<p>
+Educational example of price taking buy-side liquidity
+before a potential bearish structure shift.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- ANALYSIS 2 -->
+
+<div class="breakdown-card">
+
+<div class="svg-chart-container">
+
+<svg width="100%" height="100%" viewBox="0 0 500 250">
+
+<rect width="500" height="250" fill="#0c0d10"/>
+
+<rect
+x="230"
+y="135"
+width="85"
+height="30"
+fill="rgba(34,197,94,.2)"
+stroke="#22c55e"/>
+
+<text
+x="235"
+y="154"
+fill="#22c55e"
+font-size="10"
+font-weight="bold">
+ORDER BLOCK / FVG
+</text>
+
+<path
+d="M30 180 L80 130 L130 150 L220 50"
+fill="none"
+stroke="#22c55e"
+stroke-width="2"/>
+
+<line
+x1="80"
+y1="130"
+x2="240"
+y2="130"
+stroke="#fff"
+stroke-dasharray="3"/>
+
+<text
+x="140"
+y="123"
+fill="#fff"
+font-size="10">
+BOS — BREAK OF STRUCTURE
+</text>
+
+<path
+d="M220 50 L260 142 L440 30"
+fill="none"
+stroke="#22c55e"
+stroke-width="2"/>
+
+<circle
+cx="260"
+cy="142"
+r="4"
+fill="#22c55e"/>
+
+<text
+x="270"
+y="142"
+fill="#22c55e"
+font-size="10"
+font-weight="bold">
+ENTRY
+</text>
+
+</svg>
+
+</div>
+
+<div class="breakdown-info">
+
+<span class="tag">
+XAUUSD • FVG
+</span>
+
+<h4>
+Bullish Order Block & FVG
+</h4>
+
+<p>
+Educational example showing displacement, structure break,
+imbalance and a potential retest area.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- ANALYSIS 3 -->
+
+<div class="breakdown-card">
+
+<div class="svg-chart-container">
+
+<svg width="100%" height="100%" viewBox="0 0 500 250">
+
+<rect width="500" height="250" fill="#0c0d10"/>
+
+<path
+d="M30 210 L80 170 L130 190 L180 120 L230 150 L280 80 L340 125 L410 60 L470 95"
+fill="none"
+stroke="#22c55e"
+stroke-width="3"/>
+
+<rect
+x="210"
+y="135"
+width="85"
+height="35"
+fill="rgba(234,179,8,.12)"
+stroke="#eab308"/>
+
+<text
+x="218"
+y="157"
+fill="#fde047"
+font-size="10"
+font-weight="bold">
+ORDER BLOCK
+</text>
+
+<circle
+cx="340"
+cy="125"
+r="5"
+fill="#eab308"/>
+
+<text
+x="350"
+y="120"
+fill="#fde047"
+font-size="10">
+RETEST
+</text>
+
+</svg>
+
+</div>
+
+<div class="breakdown-info">
+
+<span class="tag">
+XAUUSD • ORDER BLOCK
+</span>
+
+<h4>
+Order Block Retest
+</h4>
+
+<p>
+Study how a previous area of interest can be revisited
+after a structural displacement.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- ANALYSIS 4 -->
+
+<div class="breakdown-card">
+
+<div class="svg-chart-container">
+
+<svg width="100%" height="100%" viewBox="0 0 500 250">
+
+<rect width="500" height="250" fill="#0c0d10"/>
+
+<path
+d="M30 200 L90 160 L150 180 L210 100 L270 145 L330 70 L390 120 L470 45"
+fill="none"
+stroke="#22c55e"
+stroke-width="3"/>
+
+<line
+x1="210"
+y1="100"
+x2="450"
+y2="100"
+stroke="#3b82f6"
+stroke-dasharray="5"/>
+
+<text
+x="220"
+y="92"
+fill="#60a5fa"
+font-size="11">
+BOS
+</text>
+
+<line
+x1="270"
+y1="145"
+x2="420"
+y2="145"
+stroke="#eab308"
+stroke-dasharray="5"/>
+
+<text
+x="280"
+y="137"
+fill="#fde047"
+font-size="11">
+FVG
+</text>
+
+</svg>
+
+</div>
+
+<div class="breakdown-info">
+
+<span class="tag">
+XAUUSD • MARKET STRUCTURE
+</span>
+
+<h4>
+BOS + FVG Continuation
+</h4>
+
+<p>
+Educational example of a structure break followed by
+an imbalance and continuation.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     PAGE 3 — CORE RULES
+========================================================= -->
+
+<div id="page-rules" class="tab-page">
+
+<h1 class="page-title">
+XAUUSD Core Execution Rules
+</h1>
+
+<p class="page-subtitle">
+The SMC concepts taught inside the academy.
+</p>
+
+
+<div class="rules-grid">
+
+
+<div class="rule-card">
+
+<h3>
+1. Liquidity Sweeps
+</h3>
+
+<p>
+Identify important highs and lows where liquidity may be
+located before searching for confirmation.
+</p>
+
+</div>
+
+
+<div class="rule-card">
+
+<h3>
+2. CHOCH
+</h3>
+
+<p>
+Study changes in market structure and wait for confirmation
+rather than entering only because liquidity was taken.
+</p>
+
+</div>
+
+
+<div class="rule-card">
+
+<h3>
+3. BOS
+</h3>
+
+<p>
+Use Break of Structure as a framework for analysing
+potential continuation.
+</p>
+
+</div>
+
+
+<div class="rule-card">
+
+<h3>
+4. Fair Value Gap
+</h3>
+
+<p>
+Learn how price imbalances form during strong displacement
+and how they can fit into a larger structure.
+</p>
+
+</div>
+
+
+<div class="rule-card">
+
+<h3>
+5. Order Blocks
+</h3>
+
+<p>
+Study potential institutional areas of interest and how
+they interact with liquidity and structure.
+</p>
+
+</div>
+
+
+<div class="rule-card">
+
+<h3>
+6. Risk Management
+</h3>
+
+<p>
+Every trade should have predefined risk, invalidation and
+reward parameters before execution.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     PAGE 4 — FOUR VIDEO LESSONS
+========================================================= -->
+
+<div id="page-videos" class="tab-page">
+
+<h1 class="page-title">
+Video Academy
+</h1>
+
+<p class="page-subtitle">
+SMC lessons focused on Liquidity, FVG, Order Blocks and Market Structure.
+</p>
+
+
+<div class="video-grid">
+
+
+<!-- VIDEO 1 -->
+
+<div class="video-card">
+
+<iframe
+src="https://www.youtube-nocookie.com/embed/rZnjkZ_JV2o"
+title="Liquidity Sweep Masterclass"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+
+<div class="video-content">
+
+<span class="tag">
+LESSON 01
+</span>
+
+<h4>
+Liquidity Sweeps
+</h4>
+
+<p>
+Learn the concept of liquidity sweeps and how liquidity
+can be taken around important highs and lows.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- VIDEO 2 -->
+
+<div class="video-card">
+
+<iframe
+src="https://www.youtube-nocookie.com/embed/2Ow2b8X0GEg"
+title="Fair Value Gap Strategy"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+
+<div class="video-content">
+
+<span class="tag">
+LESSON 02
+</span>
+
+<h4>
+Fair Value Gaps
+</h4>
+
+<p>
+Study imbalance and how FVGs can be analysed together
+with displacement and market structure.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- VIDEO 3 -->
+
+<div class="video-card">
+
+<iframe
+src="https://www.youtube-nocookie.com/embed/NsPUM3tc0mk"
+title="Order Block Trading Strategy"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+
+<div class="video-content">
+
+<span class="tag">
+LESSON 03
+</span>
+
+<h4>
+Order Blocks
+</h4>
+
+<p>
+A Smart Money Concepts lesson covering order blocks,
+market structure and imbalance.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- VIDEO 4 -->
