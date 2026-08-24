@@ -9,6 +9,10 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 
+html {
+  scroll-behavior: smooth;
+}
+
 body{
 font-family:Arial,Helvetica,sans-serif;
 background:#050505;
@@ -153,7 +157,16 @@ color:#888;
 font-size:15px;
 }
 
-/* Stili dedicati alla sezione Video */
+/* TradingView Chart Container */
+.chart-wrapper {
+background:#0b0b0b;
+border:1px solid #202020;
+border-radius:12px;
+overflow:hidden;
+height:600px;
+width:100%;
+}
+
 .video-grid {
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -175,7 +188,7 @@ border-color:#2563eb;
 
 .video-container {
 position:relative;
-padding-bottom:56.25%; /* Rapporto 16:9 */
+padding-bottom:56.25%;
 height:0;
 overflow:hidden;
 }
@@ -249,6 +262,7 @@ gap:15px;
 nav a{margin:0 10px}
 .hero{min-height:600px}
 .section{padding:70px 20px}
+.chart-wrapper {height:450px;}
 }
 </style>
 </head>
@@ -262,6 +276,7 @@ SMC <span>•</span> ICT TRADING ACADEMY
 </div>
 <nav>
 <a href="#course">Lessons</a>
+<a href="#chart">Live Chart</a>
 <a href="#videos">Videos</a>
 <a href="#about">About</a>
 <a href="#join">Start Now</a>
@@ -330,7 +345,44 @@ Learn how to spot real trend changes so you never get trapped in fake market mov
 </div>
 </section>
 
-<!-- SEZIONE VIDEO CON TUTTI I TUTORIAL -->
+<!-- SEZIONE GRAFICO TRADINGVIEW LIVE -->
+<section class="section" id="chart">
+<div class="section-header">
+<h2>Live Market Analysis</h2>
+<p>
+Analyze live market structure, liquidity levels, and price action directly on the chart below.
+</p>
+</div>
+
+<div class="chart-wrapper">
+  <!-- TradingView Widget BEGIN -->
+  <div class="tradingview-widget-container" style="height:100%;width:100%">
+    <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+    {
+      "autosize": true,
+      "symbol": "FX:EURUSD",
+      "interval": "60",
+      "timezone": "Etc/UTC",
+      "theme": "dark",
+      "style": "1",
+      "locale": "en",
+      "enable_publishing": false,
+      "backgroundColor": "#0b0b0b",
+      "gridColor": "rgba(32, 32, 32, 1)",
+      "hide_side_toolbar": false,
+      "allow_symbol_change": true,
+      "save_image": false,
+      "calendar": false,
+      "hide_volume": true,
+      "support_host": "https://www.tradingview.com"
+    }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+</div>
+</section>
+
 <section class="section" id="videos">
 <div class="section-header">
 <h2>Video Tutorials</h2>
@@ -343,41 +395,21 @@ Watch real chart breakdowns explaining liquidity, imbalances, and market setups.
 
 <div class="video-card">
 <div class="video-container">
-<iframe src="https://www.youtube.com/embed/rZnjkZ_JV2o" title="Liquidity Sweeps Strategy" allowfullscreen></iframe>
+<iframe src="https://www.youtube-nocookie.com/embed/rZnjkZ_JV2o" title="Liquidity Sweeps Strategy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <div class="video-info">
 <h4>01. Liquidity Sweeps</h4>
-<p>Learn how liquidity sweeps (Turtle Soup strategy) work on lower timeframes.</p>
+<p>Learn how liquidity sweeps work on lower timeframes.</p>
 </div>
 </div>
 
 <div class="video-card">
 <div class="video-container">
-<iframe src="https://www.youtube.com/embed/2Ow2b8X0GEg" title="Smart Money Concepts Overview" allowfullscreen></iframe>
+<iframe src="https://www.youtube-nocookie.com/embed/2Ow2b8X0GEg" title="Smart Money Concepts" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <div class="video-info">
 <h4>02. Smart Money Concepts</h4>
 <p>A full visual guide on how institutional order flow moves price action.</p>
-</div>
-</div>
-
-<div class="video-card">
-<div class="video-container">
-<iframe src="https://www.youtube.com/embed/5aC4g_f37kY" title="Fair Value Gaps Explained" allowfullscreen></iframe>
-</div>
-<div class="video-info">
-<h4>03. Fair Value Gaps (FVG)</h4>
-<p>Understanding market inefficiencies and how to trade imbalance retests.</p>
-</div>
-</div>
-
-<div class="video-card">
-<div class="video-container">
-<iframe src="https://www.youtube.com/embed/RkXpA1X81E8" title="Order Blocks Masterclass" allowfullscreen></iframe>
-</div>
-<div class="video-info">
-<h4>04. Order Blocks</h4>
-<p>Identifying institutional supply and demand zones for high-probability entries.</p>
 </div>
 </div>
 
@@ -398,8 +430,8 @@ We teach you how to read clean charts, manage your risk safely, and trade with c
 
 <section class="cta" id="join">
 <h2>Ready to Upgrade Your Trading?</h2>
-<p>Join our academy today and learn how to read charts the easy way.</p>
-<a href="#join" class="button">Get Started</a>
+<p>Join our free community and start learning today.</p>
+<a href="https://t.me/TUO_CANALE_TELEGRAM" target="_blank" class="button">Get Started</a>
 </section>
 
 <footer>
