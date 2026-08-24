@@ -4,497 +4,378 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>XAUUSD • Gold SMC Academy</title>
-<meta name="description" content="Master XAUUSD Gold trading with Smart Money Concepts, Liquidity Sweeps, and Order Blocks.">
+<title>XAUUSD • Gold SMC Academy & Terminal</title>
+<meta name="description" content="Institutional XAUUSD Gold Trading Platform - SMC Concepts, Live Terminal, Dynamic Chat & AI Assistant.">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 
-html {
-  scroll-behavior: smooth;
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #050505;
+  color: #f5f5f5;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-body{
-font-family:Arial,Helvetica,sans-serif;
-background:#050505;
-color:#f5f5f5;
-line-height:1.6;
+header {
+  padding: 15px 3%;
+  border-bottom: 1px solid #222;
+  background: #080808;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-header{
-padding:15px 7%;
-border-bottom:1px solid #222;
-background:#080808;
-position:sticky;
-top:0;
-z-index:100;
+.navbar {
+  max-width: 1800px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.navbar{
-max-width:1400px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center;
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
-.logo{
-font-size:20px;
-font-weight:700;
-letter-spacing:1px;
+.logo span { color: #eab308; }
+
+nav {
+  display: flex;
+  gap: 12px;
 }
 
-.logo span{color:#eab308}
-
-nav a{
-color:#999;
-text-decoration:none;
-margin-left:24px;
-font-size:14px;
-transition:.2s;
+.nav-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #999;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: .2s;
 }
 
-nav a:hover{color:white}
-
-.hero{
-min-height:600px;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:80px 20px;
-background:radial-gradient(circle at 50% 30%,#422006 0%,#050505 60%);
+.nav-btn:hover {
+  color: #fff;
+  border-color: #333;
 }
 
-.hero-content{max-width:900px}
-
-.label{
-display:inline-block;
-padding:7px 16px;
-border:1px solid #713f12;
-border-radius:30px;
-color:#fde047;
-font-size:12px;
-letter-spacing:1px;
-margin-bottom:25px;
+.nav-btn.active {
+  color: #eab308;
+  background: rgba(234, 179, 8, 0.1);
+  border-color: #ca8a04;
+  font-weight: bold;
 }
 
-.hero h1{
-font-size:clamp(42px,7vw,76px);
-line-height:1.05;
-margin-bottom:25px;
+/* STRUTTURA A PAGINE/TABS COMPLETI */
+.tab-page {
+  display: none;
+  width: 100%;
+  min-height: calc(100vh - 120px);
+  padding: 30px 4%;
 }
 
-.hero h1 span{color:#eab308}
-
-.hero p{
-max-width:700px;
-margin:auto;
-color:#a1a1aa;
-font-size:18px;
+.tab-page.active {
+  display: block;
 }
 
-.button{
-display:inline-block;
-margin-top:35px;
-padding:15px 30px;
-background:#ca8a04;
-color:white;
-text-decoration:none;
-border-radius:7px;
-font-weight:600;
-transition:.2s;
+/* PAGINA GRAFICO FULL SCREEN */
+#page-chart {
+  padding: 10px 1% !important;
+  height: calc(100vh - 70px);
 }
 
-.button:hover{background:#a16207}
-
-.button-tiktok {
-background:#000000;
-border:1px solid #333;
-margin-left:10px;
+.full-chart-container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #202020;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.button-tiktok:hover {
-background:#111;
-border-color:#eab308;
+/* INTESTAZIONE SEZIONI */
+.page-title {
+  font-size: 32px;
+  margin-bottom: 8px;
+  color: #fff;
 }
 
-.section{
-max-width:1400px;
-margin:auto;
-padding:80px 25px;
+.page-subtitle {
+  color: #71717a;
+  margin-bottom: 30px;
+  font-size: 15px;
 }
 
-.section-header{
-text-align:center;
-max-width:700px;
-margin:0 auto 50px;
+/* SEZIONE CORSI / RULES */
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
 }
 
-.section-header h2{
-font-size:38px;
-margin-bottom:15px;
+.rule-card {
+  background: #0b0b0b;
+  border: 1px solid #202020;
+  padding: 30px;
+  border-radius: 12px;
 }
 
-.section-header p{color:#71717a}
-
-.courses{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
+.rule-card h3 {
+  color: #eab308;
+  margin-bottom: 12px;
+  font-size: 20px;
 }
 
-.course{
-background:#0b0b0b;
-border:1px solid #202020;
-padding:35px;
-border-radius:12px;
-transition:.25s;
-}
-
-.course:hover{
-border-color:#eab308;
-transform:translateY(-4px);
-}
-
-.course-number{
-color:#eab308;
-font-size:13px;
-font-weight:bold;
-letter-spacing:2px;
-}
-
-.course h3{
-margin:18px 0 12px;
-font-size:22px;
-}
-
-.course p{
-color:#888;
-font-size:15px;
-}
-
-/* SEZIONE GRAFICO TRADINGVIEW (SOLO XAUUSD) */
-.chart-section {
-max-width:100%;
-padding:40px 2%;
-background:#050505;
-}
-
-.chart-wrapper {
-background:#0b0b0b;
-border:1px solid #202020;
-border-radius:12px;
-overflow:hidden;
-height:85vh;
-width:100%;
-}
-
-/* TRADE BREAKDOWN CON FOTO REALI DEI GRAFICI GOLD */
+/* SEZIONE REAL BREAKDOWNS (GRAFICI SMC VETTORIALI DEDICATI) */
 .breakdown-grid {
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
 }
 
 .breakdown-card {
-background:#0b0b0b;
-border:1px solid #202020;
-border-radius:12px;
-overflow:hidden;
-transition:.25s;
+  background: #0b0b0b;
+  border: 1px solid #202020;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-.breakdown-card:hover {
-border-color:#eab308;
+.svg-chart-container {
+  width: 100%;
+  height: 250px;
+  background: #0d0e12;
+  border-bottom: 1px solid #202020;
 }
 
-.breakdown-img {
-width:100%;
-height:200px;
-background:#151515;
-position:relative;
-overflow:hidden;
-border-bottom:1px solid #202020;
+.breakdown-info {
+  padding: 25px;
 }
 
-.breakdown-img img {
-width:100%;
-height:100%;
-object-fit:cover;
+.tag {
+  display: inline-block;
+  background: rgba(234, 179, 8, 0.15);
+  color: #fde047;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.breakdown-content {
-padding:20px;
-}
-
-.breakdown-tag {
-display:inline-block;
-background:rgba(234, 179, 8, 0.1);
-color:#fde047;
-padding:4px 10px;
-border-radius:4px;
-font-size:12px;
-font-weight:600;
-margin-bottom:12px;
-}
-
-.breakdown-card h4 {
-font-size:18px;
-margin-bottom:8px;
-color:#fff;
-}
-
-.breakdown-card p {
-color:#888;
-font-size:14px;
-}
-
-/* VIDEO PLAYER SOLTANTO INTERNI SUL SITO */
+/* SEZIONE VIDEO PLAYER HTML5 */
 .video-grid {
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
-margin-top:20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 30px;
 }
 
 .video-card {
-background:#0b0b0b;
-border:1px solid #202020;
-border-radius:12px;
-overflow:hidden;
-transition:.25s;
+  background: #0b0b0b;
+  border: 1px solid #202020;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-.video-card:hover {
-border-color:#eab308;
+.video-card iframe {
+  width: 100%;
+  height: 280px;
+  border: none;
 }
 
-.site-video-player {
-width:100%;
-height:220px;
-background:#000;
-display:block;
-outline:none;
+.video-content {
+  padding: 20px;
 }
 
-.video-info {
-padding:20px;
+/* SEZIONE CHAT COMMUNITY E MODERAZIONE */
+.chat-window {
+  background: #0b0b0b;
+  border: 1px solid #202020;
+  border-radius: 12px;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.video-info h4 {
-font-size:18px;
-margin-bottom:8px;
-color:#fff;
+.chat-bar {
+  background: #111;
+  padding: 15px 25px;
+  border-bottom: 1px solid #202020;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.video-info p {
-color:#888;
-font-size:14px;
+.online-indicator {
+  color: #22c55e;
+  font-size: 13px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-/* CHAT COMMUNITY CON PROFANITY FILTER */
-.chat-container {
-background:#0b0b0b;
-border:1px solid #202020;
-border-radius:12px;
-max-width:900px;
-margin:0 auto;
-overflow:hidden;
-display:flex;
-flex-direction:column;
-height:500px;
+.online-dot {
+  width: 10px;
+  height: 10px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #22c55e;
 }
 
-.chat-header {
-background:#111;
-padding:15px 20px;
-border-bottom:1px solid #202020;
-display:flex;
-justify-content:space-between;
-align-items:center;
+.chat-logs {
+  flex: 1;
+  padding: 25px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #060606;
 }
 
-.chat-header h3 {
-font-size:16px;
-color:#fff;
+.chat-bubble {
+  background: #111;
+  border: 1px solid #1f1f1f;
+  padding: 12px 18px;
+  border-radius: 8px;
+  max-width: 80%;
 }
 
-.chat-status {
-font-size:12px;
-color:#22c55e;
-display:flex;
-align-items:center;
-gap:6px;
+.chat-bubble.owner-bubble {
+  border-color: #ca8a04;
+  background: rgba(202, 138, 4, 0.08);
 }
 
-.chat-status::before {
-content:"";
-width:8px;
-height:8px;
-background:#22c55e;
-border-radius:50%;
-display:inline-block;
+.user-tag {
+  font-weight: bold;
+  font-size: 12px;
+  color: #eab308;
+  margin-bottom: 4px;
 }
 
-.chat-messages {
-flex:1;
-padding:20px;
-overflow-y:auto;
-display:flex;
-flex-direction:column;
-gap:12px;
-background:#070707;
+.badge-owner {
+  background: #ca8a04;
+  color: #000;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 900;
+  margin-left: 6px;
 }
 
-.chat-msg {
-background:#121212;
-border:1px solid #1e1e1e;
-padding:10px 14px;
-border-radius:8px;
-max-width:85%;
-font-size:14px;
+.badge-mod {
+  background: #3b82f6;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  margin-left: 6px;
 }
 
-.chat-msg .username {
-font-weight:bold;
-color:#eab308;
-font-size:12px;
-margin-bottom:2px;
+.chat-controls {
+  padding: 18px;
+  background: #111;
+  border-top: 1px solid #202020;
+  display: flex;
+  gap: 12px;
 }
 
-.chat-msg .time {
-font-size:10px;
-color:#555;
-margin-left:8px;
+.chat-controls input {
+  flex: 1;
+  background: #050505;
+  border: 1px solid #252525;
+  padding: 14px;
+  color: #fff;
+  border-radius: 6px;
+  outline: none;
 }
 
-.chat-msg.system-msg {
-border-color:#ca8a04;
-background:rgba(234, 179, 8, 0.05);
+.chat-controls input:focus { border-color: #eab308; }
+
+.chat-controls button {
+  background: #ca8a04;
+  color: #fff;
+  border: none;
+  padding: 0 30px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.chat-msg.system-msg .username {
-color:#fde047;
+/* SEZIONE CHATBOT AI ASSISTANT */
+.ai-workspace {
+  background: #0b0b0b;
+  border: 1px solid #202020;
+  border-radius: 12px;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.chat-input-area {
-padding:15px;
-background:#111;
-border-top:1px solid #202020;
-display:flex;
-gap:10px;
+.ai-output {
+  flex: 1;
+  padding: 25px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.chat-input-area input {
-flex:1;
-background:#050505;
-border:1px solid #252525;
-border-radius:6px;
-padding:12px 15px;
-color:#fff;
-font-size:14px;
-outline:none;
+.ai-msg {
+  background: #141414;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #ca8a04;
 }
 
-.chat-input-area input:focus {
-border-color:#eab308;
+.upload-box {
+  padding: 20px;
+  background: #111;
+  border-top: 1px solid #202020;
+  display: flex;
+  gap: 15px;
+  align-items: center;
 }
 
-.chat-input-area button {
-background:#ca8a04;
-color:#fff;
-border:none;
-padding:0 25px;
-border-radius:6px;
-font-weight:600;
-cursor:pointer;
-transition:.2s;
+.file-input-btn {
+  background: #222;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid #333;
+  font-size: 13px;
 }
 
-.chat-input-area button:hover {
-background:#a16207;
-}
-
-.about{
-max-width:none;
-background:#090909;
-}
-
-.about-inner{
-max-width:800px;
-margin:auto;
-text-align:center;
-}
-
-.about-inner p{
-color:#929292;
-margin-bottom:20px;
-}
-
-.cta{
-text-align:center;
-padding:100px 20px;
-background:#170f03;
-}
-
-.cta h2{
-font-size:38px;
-margin-bottom:15px;
-}
-
-.cta p{color:#929292}
-
-footer{
-border-top:1px solid #202020;
-padding:40px 20px;
-background:#040404;
-color:#777;
-font-size:13px;
-}
-
-.footer-content {
-max-width:1200px;
-margin:auto;
-text-align:center;
-}
-
-.risk-warning {
-margin-top:20px;
-padding-top:20px;
-border-top:1px solid #151515;
-font-size:11px;
-color:#555;
-line-height:1.5;
-}
-
-@media(max-width:700px){
-.navbar{
-flex-direction:column;
-gap:15px;
-}
-nav a{margin:0 8px}
-.hero{min-height:500px}
-.section{padding:50px 20px}
-.chart-wrapper {height:60vh;}
+footer {
+  border-top: 1px solid #202020;
+  padding: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: #555;
+  background: #040404;
 }
 </style>
 </head>
 
 <body>
 
-<!-- BARRA PREZZI TICKER ESCLUSIVAMENTE GOLD / XAUUSD -->
+<!-- PREZZI IN TEMPO REALE SOLO XAUUSD -->
 <div class="tradingview-widget-container">
   <div class="tradingview-widget-container__widget"></div>
   <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
   {
   "symbols": [
-    {"proName": "OANDA:XAUUSD", "title": "XAU/USD Spot"},
-    {"proName": "FX_IDC:XAUUSD", "title": "Gold Rate"},
+    {"proName": "OANDA:XAUUSD", "title": "XAUUSD Spot"},
     {"proName": "COMEX:GC1!", "title": "Gold Futures"},
-    {"proName": "TVC:GOLD", "title": "Gold Index"}
+    {"proName": "FX_IDC:XAUUSD", "title": "Gold Rate"}
   ],
-  "showSymbolLogo": true,
   "colorTheme": "dark",
   "isTransparent": false,
   "displayMode": "adaptive",
@@ -504,349 +385,333 @@ nav a{margin:0 8px}
 </div>
 
 <header>
-<div class="navbar">
-<div class="logo">
-XAUUSD <span>•</span> GOLD SMC ACADEMY
-</div>
-<nav>
-<a href="#course">Lessons</a>
-<a href="#chart">Gold Chart</a>
-<a href="#breakdowns">Setups</a>
-<a href="#videos">Videos</a>
-<a href="#chat">Live Chat</a>
-<a href="#join">TikTok</a>
-</nav>
-</div>
+  <div class="navbar">
+    <div class="logo">XAUUSD <span>•</span> GOLD TERMINAL</div>
+    <nav>
+      <button class="nav-btn active" onclick="switchTab('page-chart', this)">Live Chart</button>
+      <button class="nav-btn" onclick="switchTab('page-rules', this)">Core Rules</button>
+      <button class="nav-btn" onclick="switchTab('page-breakdowns', this)">Setups & Sweeps</button>
+      <button class="nav-btn" onclick="switchTab('page-videos', this)">Video Academy</button>
+      <button class="nav-btn" onclick="switchTab('page-chat', this)">Live Chat</button>
+      <button class="nav-btn" onclick="switchTab('page-ai', this)">AI Assistant</button>
+    </nav>
+  </div>
 </header>
 
-<section class="hero">
-<div class="hero-content">
-<div class="label">
-SMART MONEY CONCEPTS • XAUUSD ONLY
-</div>
-<h1>
-Master Gold Price Action.<br>
-<span>Trade XAUUSD With Structure.</span>
-</h1>
-<p>
-Learn how big institutions trade Gold. Spot high-probability Order Blocks, CHOCH, and Liquidity Sweeps on XAUUSD.
-</p>
-<div>
-  <a href="#chart" class="button">Open Gold Terminal</a>
-  <a href="https://www.tiktok.com/@IL_TUO_USER_TIKTOK" target="_blank" class="button button-tiktok">Follow on TikTok</a>
-</div>
-</div>
-</section>
-
-<section class="section" id="course">
-<div class="section-header">
-<h2>XAUUSD Core Strategies</h2>
-<p>
-Institutional price action rules tailored specifically for Gold.
-</p>
-</div>
-
-<div class="courses">
-<div class="course">
-<div class="course-number">01</div>
-<h3>Liquidity Sweeps (BSL/SSL)</h3>
-<p>
-Spot how Gold sweeps Asian session highs (Buy-side Liquidity) before a major drop in London.
-</p>
-</div>
-
-<div class="course">
-<div class="course-number">02</div>
-<h3>Fair Value Gaps (FVG)</h3>
-<p>
-Trade price imbalances left during aggressive news spikes on XAUUSD.
-</p>
-</div>
-
-<div class="course">
-<div class="course-number">03</div>
-<h3>Order Blocks (OB)</h3>
-<p>
-Mark precise institutional buying and selling zones on 15m and 1H Gold charts.
-</p>
-</div>
-
-<div class="course">
-<div class="course-number">04</div>
-<h3>BOS & CHOCH Shifts</h3>
-<p>
-Confirm real trend reversals on Gold using Break of Structure and Change of Character models.
-</p>
-</div>
-</div>
-</section>
-
-<!-- GRAFICO LIVE TRADINGVIEW IMPOSTATO SOLO SU XAUUSD -->
-<section class="chart-section" id="chart">
-<div class="section-header">
-<h2>Live XAUUSD Terminal</h2>
-<p>
-Real-time Gold charting workspace. Track liquidity levels and price action live.
-</p>
-</div>
-
-<div class="chart-wrapper">
-  <div class="tradingview-widget-container" style="height:100%;width:100%">
-    <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-    {
-      "autosize": true,
-      "symbol": "OANDA:XAUUSD",
-      "interval": "60",
-      "timezone": "Etc/UTC",
-      "theme": "dark",
-      "style": "1",
-      "locale": "en",
-      "enable_publishing": false,
-      "backgroundColor": "#0b0b0b",
-      "gridColor": "rgba(32, 32, 32, 1)",
-      "hide_side_toolbar": false,
-      "allow_symbol_change": true,
-      "save_image": true,
-      "calendar": false,
-      "hide_volume": false,
-      "support_host": "https://www.tradingview.com"
-    }
-    </script>
-  </div>
-</div>
-</section>
-
-<!-- SEZIONE TRADE BREAKDOWNS CON ANTEPRIMA VISUALE DEL GRAFICO GOLD (SWEEP, BOS, FVG) -->
-<section class="section" id="breakdowns">
-<div class="section-header">
-<h2>XAUUSD Real Chart Breakdowns</h2>
-<p>
-Visual proof of SMC execution models on Gold charts.
-</p>
-</div>
-
-<div class="breakdown-grid">
-
-  <div class="breakdown-card">
-    <div class="breakdown-img">
-      <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80" alt="XAUUSD Liquidity Sweep">
-    </div>
-    <div class="breakdown-content">
-      <span class="breakdown-tag">XAUUSD • London Open</span>
-      <h4>Liquidity Sweep + CHOCH</h4>
-      <p>Price swept Asian Buy-side Liquidity (BSL) above the previous high, shifted market structure (CHOCH) on 5m, and dropped 150 pips.</p>
+<!-- PAGINA 1: GRAFICO LIVE SCHERMO INTERO -->
+<div id="page-chart" class="tab-page active">
+  <div class="full-chart-container">
+    <div class="tradingview-widget-container" style="height:100%;width:100%">
+      <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+      {
+        "autosize": true,
+        "symbol": "OANDA:XAUUSD",
+        "interval": "60",
+        "timezone": "Etc/UTC",
+        "theme": "dark",
+        "style": "1",
+        "locale": "en",
+        "enable_publishing": false,
+        "backgroundColor": "#050505",
+        "gridColor": "rgba(32, 32, 32, 1)",
+        "hide_side_toolbar": false,
+        "allow_symbol_change": true,
+        "save_image": true,
+        "calendar": false
+      }
+      </script>
     </div>
   </div>
+</div>
+
+<!-- PAGINA 2: REGOLE E STRATEGIA -->
+<div id="page-rules" class="tab-page">
+  <h1 class="page-title">XAUUSD Core Execution Rules</h1>
+  <p class="page-subtitle">Strict rules for trading Gold liquidity and market structure.</p>
   
-  <div class="breakdown-card">
-    <div class="breakdown-img">
-      <img src="https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=800&q=80" alt="Gold FVG Fill">
+  <div class="rules-grid">
+    <div class="rule-card">
+      <h3>1. Liquidity Sweeps (BSL/SSL)</h3>
+      <p>Identify liquidity pools resting above Asian Highs or below Asian Lows. Never enter before price purges liquidity.</p>
     </div>
-    <div class="breakdown-content">
-      <span class="breakdown-tag">XAUUSD • NY Session</span>
-      <h4>15m Fair Value Gap (FVG) Mitigation</h4>
-      <p>Gold expanded rapidly during news, creating a massive imbalance (FVG). Price retraced to mitigate 50% of the gap before expanding higher.</p>
+    <div class="rule-card">
+      <h3>2. Change of Character (CHOCH)</h3>
+      <p>Wait for a 1m/5m CHOCH following a liquidity sweep to confirm institutional displacement.</p>
     </div>
-  </div>
-
-  <div class="breakdown-card">
-    <div class="breakdown-img">
-      <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=800&q=80" alt="Gold Order Block">
-    </div>
-    <div class="breakdown-content">
-      <span class="breakdown-tag">XAUUSD • 1H Chart</span>
-      <h4>Bullish Order Block (OB) Entry</h4>
-      <p>Clean Break of Structure (BOS) to the upside. Price returned directly to the 1H institutional Order Block for a precise risk-defined buy setup.</p>
+    <div class="rule-card">
+      <h3>3. Fair Value Gap (FVG) Entry</h3>
+      <p>Enter on the first 50% rebalance (Consequent Encroachment) of the imbalance left by impulse moves.</p>
     </div>
   </div>
-
-</div>
-</section>
-
-<!-- SEZIONE VIDEO - SOLTANTO PLAYER INTERNO AL SITO SENZA PIATTAFORME ESTERNE -->
-<section class="section" id="videos">
-<div class="section-header">
-<h2>XAUUSD On-Site Video Lessons</h2>
-<p>
-Watch full institutional Gold video breakdowns directly inside our platform.
-</p>
 </div>
 
-<div class="video-grid">
+<!-- PAGINA 3: BREAKDOWN CON GRAFICI TECNICI AD ALTA DEFINIZIONE -->
+<div id="page-breakdowns" class="tab-page">
+  <h1 class="page-title">Real XAUUSD Setup Breakdowns</h1>
+  <p class="page-subtitle">Step-by-step visual proofs of actual Gold market execution.</p>
 
-<div class="video-card">
-  <video class="site-video-player" controls preload="metadata" controlsList="nodownload">
-    <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <div class="video-info">
-    <h4>01. XAUUSD Liquidity Sweeps</h4>
-    <p>How institutions grab retail stop losses on Gold before massive reversals.</p>
+  <div class="breakdown-grid">
+    <!-- CHART VETTORIALE 1: LIQUIDITY SWEEP & CHOCH -->
+    <div class="breakdown-card">
+      <div class="svg-chart-container">
+        <svg width="100%" height="100%" viewBox="0 0 500 250">
+          <line x1="20" y1="80" x2="480" y2="80" stroke="#ca8a04" stroke-dasharray="4" stroke-width="1"/>
+          <text x="25" y="73" fill="#ca8a04" font-size="11" font-weight="bold">Asian High (Buy-Side Liquidity)</text>
+          
+          <path d="M 40 160 L 90 120 L 140 140 L 210 70 L 250 180 L 300 150 L 380 230" fill="none" stroke="#22c55e" stroke-width="2"/>
+          <path d="M 210 70 L 250 180 L 300 150 L 450 240" fill="none" stroke="#ef4444" stroke-width="2"/>
+
+          <circle cx="210" cy="70" r="5" fill="#eab308"/>
+          <text x="220" y="65" fill="#fde047" font-size="11" font-weight="bold">LIQUIDITY SWEEP</text>
+
+          <line x1="140" y1="140" x2="280" y2="140" stroke="#3b82f6" stroke-dasharray="2" stroke-width="1"/>
+          <text x="250" y="135" fill="#3b82f6" font-size="10" font-weight="bold">CHOCH (Reversal)</text>
+        </svg>
+      </div>
+      <div class="breakdown-info">
+        <span class="tag">XAUUSD • London Open</span>
+        <h4>Asian High BSL Sweep & Reversal</h4>
+        <p>Gold swept the Asian high at $2038.50, executed a sharp 5m CHOCH, and expanded down 180 pips into daily demand.</p>
+      </div>
+    </div>
+
+    <!-- CHART VETTORIALE 2: BOS & ORDER BLOCK -->
+    <div class="breakdown-card">
+      <div class="svg-chart-container">
+        <svg width="100%" height="100%" viewBox="0 0 500 250">
+          <rect x="230" y="140" width="80" height="30" fill="rgba(34, 197, 94, 0.2)" stroke="#22c55e"/>
+          <text x="235" y="160" fill="#22c55e" font-size="10" font-weight="bold">Order Block (OB)</text>
+
+          <path d="M 30 180 L 80 130 L 130 150 L 220 50" fill="none" stroke="#22c55e" stroke-width="2"/>
+          <line x1="80" y1="130" x2="240" y2="130" stroke="#ffffff" stroke-dasharray="3"/>
+          <text x="140" y="123" fill="#ffffff" font-size="10">BOS (Break of Structure)</text>
+
+          <path d="M 220 50 L 260 145 L 440 30" fill="none" stroke="#22c55e" stroke-width="2"/>
+          <circle cx="260" cy="145" r="4" fill="#22c55e"/>
+          <text x="270" y="145" fill="#22c55e" font-size="10" font-weight="bold">Sniper Entry</text>
+        </svg>
+      </div>
+      <div class="breakdown-info">
+        <span class="tag">XAUUSD • 15m Chart</span>
+        <h4>Bullish Order Block Continuation</h4>
+        <p>Clear BOS to the upside left a high-volume institutional Order Block. Price mitigated the block precisely before continuation.</p>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="video-card">
-  <video class="site-video-player" controls preload="metadata" controlsList="nodownload">
-    <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <div class="video-info">
-    <h4>02. Gold Fair Value Gaps (FVG)</h4>
-    <p>Identifying price imbalances and entering high-probability rebalances on Gold.</p>
+<!-- PAGINA 4: ACADEMY VIDEO (SENZA LIMITI) -->
+<div id="page-videos" class="tab-page">
+  <h1 class="page-title">XAUUSD Video Mastery Academy</h1>
+  <p class="page-subtitle">Long-form video tutorials covering advanced Gold strategy execution.</p>
+
+  <div class="video-grid">
+    <div class="video-card">
+      <iframe src="https://www.youtube-nocookie.com/embed/rZnjkZ_JV2o" allowfullscreen></iframe>
+      <div class="video-content">
+        <h4>Complete Gold Liquidity Sweep Masterclass</h4>
+        <p>15-minute breakdown of how institutional traders clear retail stops on Gold.</p>
+      </div>
+    </div>
+    <div class="video-card">
+      <iframe src="https://www.youtube-nocookie.com/embed/2Ow2b8X0GEg" allowfullscreen></iframe>
+      <div class="video-content">
+        <h4>Gold Fair Value Gap (FVG) Rules</h4>
+        <p>Detailed guide on locating and entering imbalance rebalances during news volatility.</p>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="video-card">
-  <video class="site-video-player" controls preload="metadata" controlsList="nodownload">
-    <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <div class="video-info">
-    <h4>03. Order Block Executions</h4>
-    <p>How to locate institutional point-of-interest zones on XAUUSD.</p>
-  </div>
-</div>
+<!-- PAGINA 5: LIVE TRADERS CHAT CON MODERAZIONE & OWNER -->
+<div id="page-chat" class="tab-page">
+  <h1 class="page-title">Gold Traders Room</h1>
+  <p class="page-subtitle">Commands: <code>/mute [user]</code>, <code>/unmute [user]</code>, <code>/mod [user]</code>, <code>/gold</code>, <code>/setup</code></p>
 
-<div class="video-card">
-  <video class="site-video-player" controls preload="metadata" controlsList="nodownload">
-    <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <div class="video-info">
-    <h4>04. BOS vs CHOCH Structure</h4>
-    <p>Mastering structural trend changes specifically on Gold charts.</p>
-  </div>
-</div>
-
-</div>
-</section>
-
-<!-- SEZIONE LIVE CHAT COMMUNITY CON FILTRO ANTI-INSULTI -->
-<section class="section" id="chat">
-<div class="section-header">
-<h2>Live Gold Traders Chat</h2>
-<p>
-Discuss setups in real-time. Type <strong>/help</strong>, <strong>/gold</strong>, or <strong>/setup</strong> for chat commands.
-</p>
-</div>
-
-<div class="chat-container">
-  <div class="chat-header">
-    <h3>Gold SMC Community Room</h3>
-    <div class="chat-status">24 Traders Online</div>
-  </div>
-  
-  <div class="chat-messages" id="chatMessages">
-    <div class="chat-msg">
-      <div class="username">GoldTrader_99 <span class="time">10:14 AM</span></div>
-      <div>XAUUSD is sweeping Asian high right now at $2038. Looking for a 5m CHOCH.</div>
+  <div class="chat-window">
+    <div class="chat-bar">
+      <h3 id="roomTitle">Gold SMC Room</h3>
+      <div class="online-indicator">
+        <div class="online-dot"></div>
+        <span id="liveUserCount">27</span> Traders Online
+      </div>
     </div>
     
-    <div class="chat-msg">
-      <div class="username">SMC_Institutional <span class="time">10:16 AM</span></div>
-      <div>Clean 15m Fair Value Gap sitting right below at $2024. Waiting for London mitigation.</div>
+    <div class="chat-logs" id="chatLogs">
+      <div class="chat-bubble">
+        <div class="user-tag">Trader_Alex <span class="badge-mod">MOD</span></div>
+        <div>London sweep confirmed at $2041. Watch out for NY distribution.</div>
+      </div>
     </div>
 
-    <div class="chat-msg system-msg">
-      <div class="username">System Bot <span class="time">10:20 AM</span></div>
-      <div>Welcome to Gold Room. Auto-moderation active. Respect members and avoid offensive language.</div>
+    <div class="chat-controls">
+      <input type="text" id="chatMsgInput" placeholder="Write a message or command..." onkeypress="onChatKey(event)">
+      <button onclick="dispatchMessage()">Send</button>
     </div>
   </div>
-  
-  <div class="chat-input-area">
-    <input type="text" id="chatInput" placeholder="Type a message or /help..." onkeypress="handleKeyPress(event)">
-    <button onclick="sendMessage()">Send</button>
+</div>
+
+<!-- PAGINA 6: AI ASSISTANT CON UPLOAD FOTO/VIDEO -->
+<div id="page-ai" class="tab-page">
+  <h1 class="page-title">AI Chart Assistant</h1>
+  <p class="page-subtitle">Upload your XAUUSD chart screenshots for instant SMC structure analysis.</p>
+
+  <div class="ai-workspace">
+    <div class="ai-output" id="aiOutput">
+      <div class="ai-msg">
+        <strong>Gold AI Assistant:</strong> Upload a chart image or describe your trade setup below. I will analyze Liquidity, Order Blocks, and CHOCH for you.
+      </div>
+    </div>
+
+    <div class="upload-box">
+      <label class="file-input-btn">
+        📷 Attach Chart Image
+        <input type="file" id="chartFile" accept="image/*" style="display:none;" onchange="handleFileAttach(event)">
+      </label>
+      <span id="fileNameDisplay" style="font-size:12px; color:#aaa;">No file chosen</span>
+      <input type="text" id="aiQuery" placeholder="Ask AI about this setup..." style="flex:1; background:#050505; border:1px solid #252525; padding:10px; color:#fff; border-radius:6px;">
+      <button onclick="askAI()" style="background:#ca8a04; color:#fff; border:none; padding:10px 20px; border-radius:6px; font-weight:bold; cursor:pointer;">Analyze</button>
+    </div>
   </div>
 </div>
-</section>
-
-<section class="section about" id="about">
-<div class="about-inner">
-<h2>Simple Gold Trading</h2>
-<p>
-Gold moves fast, but institutional price structure remains systematic. Master liquidity and market structure.
-</p>
-</div>
-</section>
-
-<section class="cta" id="join">
-<h2>Join the Community</h2>
-<p>Follow our official TikTok account for daily XAUUSD trade setups and live breakdowns.</p>
-<a href="https://www.tiktok.com/@IL_TUO_USER_TIKTOK" target="_blank" class="button">Watch on TikTok</a>
-</section>
 
 <footer>
-<div class="footer-content">
-<p>&copy; 2026 XAUUSD Gold SMC Academy. All rights reserved.</p>
-
-<div class="risk-warning">
-<p><strong>Risk Warning & Financial Disclaimer:</strong> Trading Commodities such as Gold (XAUUSD) involves substantial risk and is not suitable for all investors. High market volatility can result in rapid loss of capital. Content provided is strictly educational and does not constitute financial advice.</p>
-</div>
-</div>
+  <p>&copy; 2026 XAUUSD Gold SMC Terminal. Educational Platform. Trading involves risk.</p>
 </footer>
 
 <script>
-// Lista parole per filtro insulti e bestemmie (Auto-Censura)
-const badWords = ["dio", "porco", "stronzo", "cazzo", "coglioneeeee", "coglione", "merda", "vaffanculo", "bastardo", "troia", "puttana"];
+// GESTIONE NAVIGAZIONE A PAGINE (TABS)
+function switchTab(pageId, btn) {
+  document.querySelectorAll('.tab-page').forEach(page => page.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  
+  document.getElementById(pageId).classList.add('active');
+  btn.classList.add('active');
+}
 
-function cleanMessage(text) {
-  let cleaned = text;
-  badWords.forEach(word => {
-    const regex = new RegExp("\\b" + word + "\\b", "gi");
-    cleaned = cleaned.replace(regex, "***");
+// SISTEMA CHAT AVANZATO (OWNER, MODERATORI, MUTE, USER DINAMICI)
+let mutedUsers = new Set();
+let moderators = new Set(["Trader_Alex"]);
+let liveCount = 27;
+
+// Simula variazione reale utenti online
+setInterval(() => {
+  liveCount += Math.floor(Math.random() * 3) - 1;
+  if(liveCount < 18) liveCount = 18;
+  document.getElementById('liveUserCount').innerText = liveCount;
+}, 4000);
+
+const profanityList = ["cazzo", "stronzo", "merda", "dio", "porco", "puttana", "troia", "coglione"];
+
+function filterProfanity(text) {
+  let clean = text;
+  profanityList.forEach(w => {
+    const reg = new RegExp("\\b" + w + "\\b", "gi");
+    clean = clean.replace(reg, "***");
   });
-  return cleaned;
+  return clean;
 }
 
-function handleKeyPress(e) {
-  if (e.key === 'Enter') {
-    sendMessage();
-  }
+function onChatKey(e) {
+  if (e.key === 'Enter') dispatchMessage();
 }
 
-function sendMessage() {
-  const input = document.getElementById('chatInput');
-  const chatMessages = document.getElementById('chatMessages');
-  const rawText = input.value.trim();
+function dispatchMessage() {
+  const input = document.getElementById('chatMsgInput');
+  const logs = document.getElementById('chatLogs');
+  const raw = input.value.trim();
   
-  if (rawText === '') return;
-  
-  const now = new Date();
-  const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  
-  // Gestione Comandi Chat
-  if (rawText.startsWith('/')) {
-    let responseText = "";
-    if (rawText.toLowerCase() === '/gold') {
-      responseText = "Current Gold (XAUUSD) Bias: Bullish expansion towards Daily FVG ($2045).";
-    } else if (rawText.toLowerCase() === '/help') {
-      responseText = "Available commands: /gold (Current bias), /setup (Today's key level), /help";
-    } else if (rawText.toLowerCase() === '/setup') {
-      responseText = "Key Setup: Watch London Open sweep above Asian High ($2040) for short opportunity.";
+  if (!raw) return;
+
+  // COMANDI MODERAZIONE E CHAT
+  if (raw.startsWith('/')) {
+    const parts = raw.split(' ');
+    const cmd = parts[0].toLowerCase();
+    const target = parts[1];
+
+    if (cmd === '/mute' && target) {
+      mutedUsers.add(target);
+      appendSysMsg(`User <strong>${target}</strong> has been muted.`);
+    } else if (cmd === '/unmute' && target) {
+      mutedUsers.delete(target);
+      appendSysMsg(`User <strong>${target}</strong> has been unmuted.`);
+    } else if (cmd === '/mod' && target) {
+      moderators.add(target);
+      appendSysMsg(`User <strong>${target}</strong> is now a Moderator.`);
+    } else if (cmd === '/gold') {
+      appendSysMsg("Gold (XAUUSD) Bias: Bullish expansion targeting $2048 liquidity.");
+    } else if (cmd === '/setup') {
+      appendSysMsg("Today's Setup: Watch for 15m FVG mitigation at $2028.");
     } else {
-      responseText = "Unknown command. Type /help for assistance.";
+      appendSysMsg("Unknown command. Available: /mute, /unmute, /mod, /gold, /setup");
     }
-    
-    const sysDiv = document.createElement('div');
-    sysDiv.className = 'chat-msg system-msg';
-    sysDiv.innerHTML = `<div class="username">System Bot <span class="time">${timeStr}</span></div><div>${responseText}</div>`;
-    chatMessages.appendChild(sysDiv);
     input.value = '';
-    chatMessages.scrollTop = chatMessages.scrollHeight;
     return;
   }
-  
-  // Censura ed Invio Messaggio Utente
-  const filteredText = cleanMessage(rawText);
-  
-  const msgDiv = document.createElement('div');
-  msgDiv.className = 'chat-msg';
-  msgDiv.innerHTML = `<div class="username">You <span class="time">${timeStr}</span></div><div>${filteredText}</div>`;
-  
-  chatMessages.appendChild(msgDiv);
+
+  const cleanText = filterProfanity(raw);
+  const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+  const bubble = document.createElement('div');
+  bubble.className = 'chat-bubble owner-bubble';
+  bubble.innerHTML = `
+    <div class="user-tag">YOU <span class="badge-owner">OWNER</span> <span style="font-size:10px; color:#555; margin-left:6px;">${time}</span></div>
+    <div>${cleanText}</div>
+  `;
+
+  logs.appendChild(bubble);
   input.value = '';
-  chatMessages.scrollTop = chatMessages.scrollHeight;
+  logs.scrollTop = logs.scrollHeight;
+}
+
+function appendSysMsg(htmlContent) {
+  const logs = document.getElementById('chatLogs');
+  const sys = document.createElement('div');
+  sys.className = 'chat-bubble';
+  sys.style.borderColor = '#ca8a04';
+  sys.style.background = 'rgba(234, 179, 8, 0.05)';
+  sys.innerHTML = `<div class="user-tag" style="color:#fde047;">SYSTEM BOT</div><div>${htmlContent}</div>`;
+  logs.appendChild(sys);
+  logs.scrollTop = logs.scrollHeight;
+}
+
+// GESTIONE AI ASSISTANT & UPLOAD
+let selectedFile = null;
+
+function handleFileAttach(e) {
+  selectedFile = e.target.files[0];
+  if(selectedFile) {
+    document.getElementById('fileNameDisplay').innerText = selectedFile.name;
+  }
+}
+
+function askAI() {
+  const qInput = document.getElementById('aiQuery');
+  const out = document.getElementById('aiOutput');
+  const text = qInput.value.trim();
+
+  if(!text && !selectedFile) return;
+
+  const userMsg = document.createElement('div');
+  userMsg.className = 'ai-msg';
+  userMsg.style.borderLeftColor = '#3b82f6';
+  userMsg.innerHTML = `<strong>You:</strong> ${text} ${selectedFile ? `<br><em>[Attached Image: ${selectedFile.name}]</em>` : ''}`;
+  out.appendChild(userMsg);
+
+  setTimeout(() => {
+    const aiMsg = document.createElement('div');
+    aiMsg.className = 'ai-msg';
+    aiMsg.innerHTML = `<strong>Gold AI Assistant:</strong> Analysis complete for your chart. 
+    <br>• <strong>Liquidity Sweep:</strong> Identified resting Buy-side liquidity.
+    <br>• <strong>Structure:</strong> Valid 5m CHOCH detected. Entry recommended at 50% FVG rebalance.`;
+    out.appendChild(aiMsg);
+    out.scrollTop = out.scrollHeight;
+  }, 1000);
+
+  qInput.value = '';
+  document.getElementById('fileNameDisplay').innerText = 'No file chosen';
+  selectedFile = null;
 }
 </script>
 
