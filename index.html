@@ -153,6 +153,57 @@ color:#888;
 font-size:15px;
 }
 
+/* Stili dedicati alla sezione Video */
+.video-grid {
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.video-card {
+background:#0b0b0b;
+border:1px solid #202020;
+border-radius:12px;
+overflow:hidden;
+transition:.25s;
+}
+
+.video-card:hover {
+border-color:#2563eb;
+}
+
+.video-container {
+position:relative;
+padding-bottom:56.25%; /* Rapporto 16:9 */
+height:0;
+overflow:hidden;
+}
+
+.video-container iframe {
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+border:0;
+}
+
+.video-info {
+padding:20px;
+}
+
+.video-info h4 {
+font-size:18px;
+margin-bottom:8px;
+color:#fff;
+}
+
+.video-info p {
+color:#888;
+font-size:14px;
+}
+
 .about{
 max-width:none;
 background:#090909;
@@ -211,6 +262,7 @@ SMC <span>•</span> ICT TRADING ACADEMY
 </div>
 <nav>
 <a href="#course">Lessons</a>
+<a href="#videos">Videos</a>
 <a href="#about">About</a>
 <a href="#join">Start Now</a>
 </nav>
@@ -275,6 +327,60 @@ Find key levels where big institutions buy or sell in large amounts so you can e
 Learn how to spot real trend changes so you never get trapped in fake market moves again.
 </p>
 </div>
+</div>
+</section>
+
+<!-- SEZIONE VIDEO CON TUTTI I TUTORIAL -->
+<section class="section" id="videos">
+<div class="section-header">
+<h2>Video Tutorials</h2>
+<p>
+Watch real chart breakdowns explaining liquidity, imbalances, and market setups.
+</p>
+</div>
+
+<div class="video-grid">
+
+<div class="video-card">
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/rZnjkZ_JV2o" title="Liquidity Sweeps Strategy" allowfullscreen></iframe>
+</div>
+<div class="video-info">
+<h4>01. Liquidity Sweeps</h4>
+<p>Learn how liquidity sweeps (Turtle Soup strategy) work on lower timeframes.</p>
+</div>
+</div>
+
+<div class="video-card">
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/2Ow2b8X0GEg" title="Smart Money Concepts Overview" allowfullscreen></iframe>
+</div>
+<div class="video-info">
+<h4>02. Smart Money Concepts</h4>
+<p>A full visual guide on how institutional order flow moves price action.</p>
+</div>
+</div>
+
+<div class="video-card">
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/5aC4g_f37kY" title="Fair Value Gaps Explained" allowfullscreen></iframe>
+</div>
+<div class="video-info">
+<h4>03. Fair Value Gaps (FVG)</h4>
+<p>Understanding market inefficiencies and how to trade imbalance retests.</p>
+</div>
+</div>
+
+<div class="video-card">
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/RkXpA1X81E8" title="Order Blocks Masterclass" allowfullscreen></iframe>
+</div>
+<div class="video-info">
+<h4>04. Order Blocks</h4>
+<p>Identifying institutional supply and demand zones for high-probability entries.</p>
+</div>
+</div>
+
 </div>
 </section>
 
