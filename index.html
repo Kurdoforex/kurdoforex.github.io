@@ -1,98 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SMC • ICT Trading Academy</title>
+<title>SMC • ICT Trading Academy</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #05070b;
-            color: white;
-        }
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#050505;
+color:#f5f5f5;
+line-height:1.6;
+}
 
-        header {
-            padding: 22px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #080b12;
-            border-bottom: 1px solid #1c2330;
-        }
+header{
+padding:20px 7%;
+border-bottom:1px solid #222;
+background:#080808;
+}
 
-        .logo {
-            font-size: 21px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
+.navbar{
+max-width:1200px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
 
-        .logo span {
-            color: #3b82f6;
-        }
+.logo{
+font-size:20px;
+font-weight:700;
+letter-spacing:1px;
+}
 
-        nav a {
-            color: #a1a1aa;
-            text-decoration: none;
-            margin-left: 25px;
-            font-size: 15px;
-        }
+.logo span{color:#3b82f6}
 
-        nav a:hover {
-            color: white;
-        }
+nav a{
+color:#999;
+text-decoration:none;
+margin-left:28px;
+font-size:14px;
+}
 
-        .hero {
-            min-height: 600px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 80px 20px;
-            background:
-                radial-gradient(circle at center, #172554 0%, #05070b 60%);
-        }
+nav a:hover{color:white}
 
-        .hero-content {
-            max-width: 850px;
-        }
+.hero{
+min-height:700px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:100px 20px;
+background:radial-gradient(circle at 50% 30%,#172554 0%,#050505 60%);
+}
 
-        .badge {
-            display: inline-block;
-            padding: 8px 15px;
-            border: 1px solid #263a63;
-            border-radius: 30px;
-            color: #60a5fa;
-            font-size: 13px;
-            margin-bottom: 25px;
-        }
+.hero-content{max-width:900px}
 
-        .hero h1 {
-            font-size: 58px;
-            line-height: 1.05;
-            margin: 0 0 25px;
-        }
+.label{
+display:inline-block;
+padding:7px 16px;
+border:1px solid #263a63;
+border-radius:30px;
+color:#60a5fa;
+font-size:12px;
+letter-spacing:1px;
+margin-bottom:25px;
+}
 
-        .hero h1 span {
-            color: #3b82f6;
-        }
+.hero h1{
+font-size:clamp(42px,7vw,76px);
+line-height:1.05;
+margin-bottom:25px;
+}
 
-        .hero p {
-            color: #a1a1aa;
-            font-size: 19px;
-            line-height: 1.7;
-            max-width: 680px;
-            margin: auto;
-        }
+.hero h1 span{color:#3b82f6}
 
-        .button {
-            display: inline-block;
-            margin-top: 35px;
-            padding: 16px 32px;
-            background: #256
+.hero p{
+max-width:700px;
+margin:auto;
+color:#a1a1aa;
+font-size:18px;
+}
+
+.button{
+display:inline-block;
+margin-top:35px;
+padding:15px 30px;
+background:#2563eb;
+color:white;
+text-decoration:none;
+border-radius:7px;
+font-weight:600;
+}
+
+.button:hover{background:#1d4ed8}
+
+.section{
+max-width:1150px;
+margin:auto;
+padding:100px 25px;
+}
+
+.section-header{
+text-align:center;
+max-width:700px;
+margin:0 auto 60px;
+}
+
+.section-header h2{
+font-size:38px;
+margin-bottom:15px;
+}
+
+.section-header p{color:#71717a}
+
+.courses{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+}
+
+.course{
+background:#0b0b0b;
+border:1px solid #202020;
+padding:35px;
+border-radius:12px;
+transition:.25s;
+}
+
+.course:hover{
+border-color:#2563eb;
+transform:translateY(-4px);
+}
+
+.course-number{
+color:#3b82f6;
+font-size:13px;
+font-weight:bold;
+letter-spacing:2px;
+}
+
+.course h3{
+margin:18px 0 12px;
+font-size:22px;
+}
+
+.course p{
+color:#888;
+font-size:15px;
+}
+
+.about{
+max-width:none;
+background:#090909;
+}
+
+.about-inner{
+max-width:800px;
+margin:auto;
+text-align:center;
+}
+
+.about-inner p{
+color:#929292;
+margin-bottom:20px;
+}
+
+.cta{
+text-align:center;
+padding:100px 20px;
+background:#0b1220;
+}
+
+.cta h2{
+font-size:38px;
+margin-bottom:15px;
+}
+
+.cta p{color:#929292}
+
+footer{
+border-top:1px solid #202020;
+padding:35px 20px;
+text-align:center;
+color:#555;
+font-size:12px;
+}
+
+@media(max-width:700px){
+
+.navbar{
+flex-direction:column;
+gap:15px;
+}
+
+nav a{margin:0 10px}
+
+.hero{min-height:600px}
+
+.section{padding:70px 20px}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="navbar">
+
+<div class="logo">
+SMC <span>•</span> ICT TRADING ACADEMY
+</div>
+
+<nav>
+<a href="#course">Course</a>
+<a href="#about">About</a>
+</nav>
+
+</div>
+</header>
+
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="label">
+SMART MONEY CONCEPTS • ICT
+</div>
+
+<h1>
+Understand the Market.<br>
+<span>Trade With Structure.</span>
+</h1>
+
+<p>
+Learn how to read the markets using Smart Money Concepts
+and ICT-inspired price action. Master Liquidity Sweeps,
+Fair Value Gaps, Order Blocks, CHOCH and BOS through
+structured, easy-to-follow lessons designed to help you
+build a clear understanding of market structure.
+</p>
+
+<a href="#course" class="button">
+View The Course
+</a>
+
+</div>
+
+</section>
+
+
+<section class="section" id="course">
+
+<div class="section-header">
+
+<h2>The Course</h2>
+
+<p>
+Learn the core concepts step by step and build a structured
+approach to analysing the markets.
+</p>
+
+</div>
+
+
+<div class="courses">
+
+
+<div class="course">
+<div class="course-number">01</div>
+<h3>Liquidity Sweeps</h3>
+<p>
+Understand liquidity and how price can sweep important
+highs and lows before making a move.
+</p>
+</div>
+
+
+<div class="course">
+<div class="course-number">02</div>
+<h3>Fair Value Gaps</h3>
+<p>
+Learn how Fair Value Gaps form and how they can be
+identified and analysed within price action.
+</p>
+</div>
+
+
+<div class="course">
+<div class="course-number">03</div>
+<h3>Order Blocks</h3>
+<p>
+Study Order Blocks and understand how they can be
+identified within market structure.
+</p>
+</div>
+
+
+<div class="course
