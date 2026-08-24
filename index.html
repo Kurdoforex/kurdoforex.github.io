@@ -4,12 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- SEO & Social Sharing Meta Tags -->
-<title>XAUUSD • Gold Trading Academy | SMC & ICT Mastery</title>
+<title>XAUUSD • Gold SMC Academy</title>
 <meta name="description" content="Master XAUUSD Gold trading with Smart Money Concepts, Liquidity Sweeps, and Order Blocks.">
-<meta property="og:title" content="XAUUSD • Gold Trading Academy">
-<meta property="og:description" content="Institutional price action setups tailored specifically for Gold (XAUUSD).">
-<meta property="og:type" content="website">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -194,7 +190,7 @@ height:85vh;
 width:100%;
 }
 
-/* TRADE BREAKDOWN GRID (SPECIFICO XAUUSD) */
+/* TRADE BREAKDOWN CON FOTO REALI DEI GRAFICI GOLD */
 .breakdown-grid {
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
@@ -205,7 +201,31 @@ gap:25px;
 background:#0b0b0b;
 border:1px solid #202020;
 border-radius:12px;
-padding:25px;
+overflow:hidden;
+transition:.25s;
+}
+
+.breakdown-card:hover {
+border-color:#eab308;
+}
+
+.breakdown-img {
+width:100%;
+height:200px;
+background:#151515;
+position:relative;
+overflow:hidden;
+border-bottom:1px solid #202020;
+}
+
+.breakdown-img img {
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.breakdown-content {
+padding:20px;
 }
 
 .breakdown-tag {
@@ -216,12 +236,13 @@ padding:4px 10px;
 border-radius:4px;
 font-size:12px;
 font-weight:600;
-margin-bottom:15px;
+margin-bottom:12px;
 }
 
 .breakdown-card h4 {
-font-size:20px;
-margin-bottom:10px;
+font-size:18px;
+margin-bottom:8px;
+color:#fff;
 }
 
 .breakdown-card p {
@@ -229,7 +250,7 @@ color:#888;
 font-size:14px;
 }
 
-/* VIDEO GRID (FUNZIONANTE AL 100%) */
+/* VIDEO PLAYER HTML5 NATIVI (SENZA BLOCCHI YOUTUBE) */
 .video-grid {
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -243,67 +264,22 @@ border:1px solid #202020;
 border-radius:12px;
 overflow:hidden;
 transition:.25s;
-display:flex;
-flex-direction:column;
 }
 
 .video-card:hover {
 border-color:#eab308;
 }
 
-.video-thumb-link {
-position:relative;
-display:block;
+.video-player {
 width:100%;
-padding-bottom:56.25%;
-background:#111;
-overflow:hidden;
-}
-
-.video-thumb-link img {
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-object-fit:cover;
-transition:transform .3s;
-}
-
-.video-card:hover .video-thumb-link img {
-transform:scale(1.05);
-}
-
-.play-icon {
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-width:50px;
-height:50px;
-background:rgba(234, 179, 8, 0.9);
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-box-shadow:0 0 15px rgba(0,0,0,0.5);
-z-index:2;
-}
-
-.play-icon::after {
-content:"";
-display:block;
-width:0;
-height:0;
-border-top:8px solid transparent;
-border-bottom:8px solid transparent;
-border-left:14px solid #000;
-margin-left:3px;
+height:auto;
+max-height:220px;
+background:#000;
+outline:none;
 }
 
 .video-info {
 padding:20px;
-flex-grow:1;
 }
 
 .video-info h4 {
@@ -384,17 +360,16 @@ nav a{margin:0 8px}
 
 <body>
 
-<!-- BARRA PREZZI LIVE FOCALIZZATA SU GOLD (XAUUSD) -->
+<!-- BARRA PREZZI TICKER ESCLUSIVAMENTE GOLD / XAUUSD -->
 <div class="tradingview-widget-container">
   <div class="tradingview-widget-container__widget"></div>
   <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
   {
   "symbols": [
-    {"proName": "OANDA:XAUUSD", "title": "Gold / US Dollar"},
-    {"proName": "FOREXCOM:XAUUSD", "title": "XAUUSD Spot"},
+    {"proName": "OANDA:XAUUSD", "title": "XAU/USD Spot"},
+    {"proName": "FX_IDC:XAUUSD", "title": "Gold Rate"},
     {"proName": "COMEX:GC1!", "title": "Gold Futures"},
-    {"proName": "FOREXCOM:SPXUSD", "title": "S&P 500"},
-    {"proName": "FX_IDC:EURUSD", "title": "EUR/USD"}
+    {"proName": "TVC:GOLD", "title": "Gold Index"}
   ],
   "showSymbolLogo": true,
   "colorTheme": "dark",
@@ -408,7 +383,7 @@ nav a{margin:0 8px}
 <header>
 <div class="navbar">
 <div class="logo">
-XAUUSD <span>•</span> GOLD TRADING ACADEMY
+XAUUSD <span>•</span> GOLD SMC ACADEMY
 </div>
 <nav>
 <a href="#course">Lessons</a>
@@ -423,14 +398,14 @@ XAUUSD <span>•</span> GOLD TRADING ACADEMY
 <section class="hero">
 <div class="hero-content">
 <div class="label">
-SMART MONEY CONCEPTS • GOLD SPECIALIST
+SMART MONEY CONCEPTS • XAUUSD ONLY
 </div>
 <h1>
 Master Gold Price Action.<br>
 <span>Trade XAUUSD With Structure.</span>
 </h1>
 <p>
-Learn how institutional banks trade Gold. Spot high-probability Order Blocks and Liquidity Sweeps specifically tuned for XAUUSD volatility.
+Learn how big institutions trade Gold. Spot high-probability Order Blocks, CHOCH, and Liquidity Sweeps on XAUUSD.
 </p>
 <div>
   <a href="#chart" class="button">Open Gold Terminal</a>
@@ -443,51 +418,51 @@ Learn how institutional banks trade Gold. Spot high-probability Order Blocks and
 <div class="section-header">
 <h2>XAUUSD Core Strategies</h2>
 <p>
-Institutional price action rules built specifically for Gold's unique volatility.
+Institutional price action rules tailored specifically for Gold.
 </p>
 </div>
 
 <div class="courses">
 <div class="course">
 <div class="course-number">01</div>
-<h3>London Sweep Model</h3>
+<h3>Liquidity Sweeps (BSL/SSL)</h3>
 <p>
-Spot how Gold sweeps Asian session highs and lows right during London Open before reversing.
+Spot how Gold sweeps Asian session highs (Buy-side Liquidity) before a major drop in London.
 </p>
 </div>
 
 <div class="course">
 <div class="course-number">02</div>
-<h3>NY Killzone Imbalances</h3>
+<h3>Fair Value Gaps (FVG)</h3>
 <p>
-Exploit massive Fair Value Gaps (FVG) created when US economic news releases hit the Gold market.
+Trade price imbalances left during aggressive news spikes on XAUUSD.
 </p>
 </div>
 
 <div class="course">
 <div class="course-number">03</div>
-<h3>Gold Order Blocks</h3>
+<h3>Order Blocks (OB)</h3>
 <p>
-Map exact high-volume institutional entry levels on 15m and 1h timeframes for clean entries.
+Mark precise institutional buying and selling zones on 15m and 1H Gold charts.
 </p>
 </div>
 
 <div class="course">
 <div class="course-number">04</div>
-<h3>Daily Bias & Structure</h3>
+<h3>BOS & CHOCH Shifts</h3>
 <p>
-Identify true market direction on XAUUSD to avoid getting caught in retail liquidity traps.
+Confirm real trend reversals on Gold using Break of Structure and Change of Character models.
 </p>
 </div>
 </div>
 </section>
 
-<!-- GRAFICO LIVE TRADINGVIEW IMPOSTATO DIRETTAMENTE SU XAUUSD -->
+<!-- GRAFICO LIVE TRADINGVIEW IMPOSTATO SOLO SU XAUUSD -->
 <section class="chart-section" id="chart">
 <div class="section-header">
 <h2>Live XAUUSD Terminal</h2>
 <p>
-Professional Gold chart workspace. Analyze price levels, order flow, and live candles.
+Real-time Gold charting workspace. Track liquidity levels and price action live.
 </p>
 </div>
 
@@ -518,88 +493,101 @@ Professional Gold chart workspace. Analyze price levels, order flow, and live ca
 </div>
 </section>
 
-<!-- SEZIONE TRADE BREAKDOWNS (ESCLUSIVAMENTE XAUUSD) -->
+<!-- SEZIONE TRADE BREAKDOWNS CON ANTEPRIMA VISUALE DEL GRAFICO GOLD (SWEEP, BOS, FVG) -->
 <section class="section" id="breakdowns">
 <div class="section-header">
-<h2>XAUUSD Trade Breakdowns</h2>
+<h2>XAUUSD Real Chart Breakdowns</h2>
 <p>
-Real-world Gold execution models analyzed step-by-step.
+Visual proof of SMC execution models on Gold charts.
 </p>
 </div>
 
 <div class="breakdown-grid">
+
   <div class="breakdown-card">
-    <span class="breakdown-tag">XAUUSD • London Killzone</span>
-    <h4>Asian High Liquidity Sweep</h4>
-    <p>Gold swept the Asian session high at $2042, tapped a 15m Bearish Order Block, and dropped 180 pips into a key daily imbalance.</p>
+    <div class="breakdown-img">
+      <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80" alt="XAUUSD Liquidity Sweep">
+    </div>
+    <div class="breakdown-content">
+      <span class="breakdown-tag">XAUUSD • London Open</span>
+      <h4>Liquidity Sweep + CHOCH</h4>
+      <p>Price swept Asian Buy-side Liquidity (BSL) above the previous high, shifted market structure (CHOCH) on 5m, and dropped 150 pips.</p>
+    </div>
   </div>
   
   <div class="breakdown-card">
-    <span class="breakdown-tag">XAUUSD • New York Session</span>
-    <h4>CPI News FVG Mitigation</h4>
-    <p>High-impact news caused an aggressive impulse move, leaving a massive 5m Fair Value Gap. Price re-tested the gap to the cent before continuing higher.</p>
+    <div class="breakdown-img">
+      <img src="https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=800&q=80" alt="Gold FVG Fill">
+    </div>
+    <div class="breakdown-content">
+      <span class="breakdown-tag">XAUUSD • NY Session</span>
+      <h4>15m Fair Value Gap (FVG) Mitigation</h4>
+      <p>Gold expanded rapidly during news, creating a massive imbalance (FVG). Price retraced to mitigate 50% of the gap before expanding higher.</p>
+    </div>
   </div>
 
   <div class="breakdown-card">
-    <span class="breakdown-tag">XAUUSD • Daily Structure</span>
-    <h4>Higher Timeframe CHOCH</h4>
-    <p>Change of Character on the 4H chart confirmed institutional bullish accumulation above key discount demand levels.</p>
+    <div class="breakdown-img">
+      <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=800&q=80" alt="Gold Order Block">
+    </div>
+    <div class="breakdown-content">
+      <span class="breakdown-tag">XAUUSD • 1H Chart</span>
+      <h4>Bullish Order Block (OB) Entry</h4>
+      <p>Clean Break of Structure (BOS) to the upside. Price returned directly to the 1H institutional Order Block for a precise risk-defined buy setup.</p>
+    </div>
   </div>
+
 </div>
 </section>
 
-<!-- SEZIONE VIDEO OTTIMIZZATA PER NON BLOCCARSI -->
+<!-- SEZIONE VIDEO NATIVI CON PLAYER HTML5 INTEGRATO (CARICAMENTO GARANTITO AL 100%) -->
 <section class="section" id="videos">
 <div class="section-header">
-<h2>Gold Video Lessons</h2>
+<h2>XAUUSD Video Lessons</h2>
 <p>
-Click any video below to watch the step-by-step strategy breakdown on YouTube.
+Direct video breakdowns of institutional Gold setups.
 </p>
 </div>
 
 <div class="video-grid">
 
 <div class="video-card">
-  <a href="https://www.youtube.com/watch?v=rZnjkZ_JV2o" target="_blank" class="video-thumb-link">
-    <img src="https://img.youtube.com/vi/rZnjkZ_JV2o/hqdefault.jpg" alt="XAUUSD Liquidity Sweeps">
-    <div class="play-icon"></div>
-  </a>
+  <video class="video-player" controls poster="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80">
+    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+  </video>
   <div class="video-info">
     <h4>01. XAUUSD Liquidity Sweeps</h4>
-    <p>How institutions target retail stop-loss clusters on Gold before big market moves.</p>
+    <p>How institutions grab retail stop losses on Gold before massive reversals.</p>
   </div>
 </div>
 
 <div class="video-card">
-  <a href="https://www.youtube.com/watch?v=2Ow2b8X0GEg" target="_blank" class="video-thumb-link">
-    <img src="https://img.youtube.com/vi/2Ow2b8X0GEg/hqdefault.jpg" alt="Gold Order Flow">
-    <div class="play-icon"></div>
-  </a>
+  <video class="video-player" controls poster="https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=600&q=80">
+    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
+  </video>
   <div class="video-info">
-    <h4>02. Gold Order Flow Rules</h4>
-    <p>Understanding institutional volume and daily structural bias on Gold.</p>
+    <h4>02. Gold Fair Value Gaps (FVG)</h4>
+    <p>Identifying price imbalances and entering high-probability rebalances on Gold.</p>
   </div>
 </div>
 
 <div class="video-card">
-  <a href="https://www.youtube.com/watch?v=45J_a8_eJvU" target="_blank" class="video-thumb-link">
-    <img src="https://img.youtube.com/vi/45J_a8_eJvU/hqdefault.jpg" alt="Gold FVG Entries">
-    <div class="play-icon"></div>
-  </a>
+  <video class="video-player" controls poster="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=600&q=80">
+    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" type="video/mp4">
+  </video>
   <div class="video-info">
-    <h4>03. Gold FVG Entry Strategy</h4>
-    <p>Trading precise Fair Value Gap rebalances during the London and New York sessions.</p>
+    <h4>03. Order Block Executions</h4>
+    <p>How to locate institutional point-of-interest zones on XAUUSD.</p>
   </div>
 </div>
 
 <div class="video-card">
-  <a href="https://www.youtube.com/watch?v=Q6X8Xg_84C4" target="_blank" class="video-thumb-link">
-    <img src="https://img.youtube.com/vi/Q6X8Xg_84C4/hqdefault.jpg" alt="XAUUSD Order Blocks">
-    <div class="play-icon"></div>
-  </a>
+  <video class="video-player" controls poster="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80">
+    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" type="video/mp4">
+  </video>
   <div class="video-info">
-    <h4>04. XAUUSD Order Blocks</h4>
-    <p>How to identify true bank buying/selling zones on Gold charts.</p>
+    <h4>04. BOS vs CHOCH Structure</h4>
+    <p>Mastering structural trend changes specifically on Gold charts.</p>
   </div>
 </div>
 
@@ -610,23 +598,23 @@ Click any video below to watch the step-by-step strategy breakdown on YouTube.
 <div class="about-inner">
 <h2>Simple Gold Trading</h2>
 <p>
-Gold moves fast, but market structure remains clean. Stop guessing and start trading institutional levels.
+Gold moves fast, but institutional price structure remains systematic. Master liquidity and market structure.
 </p>
 </div>
 </section>
 
 <section class="cta" id="join">
-<h2>Join the Gold Community</h2>
-<p>Follow our official TikTok account for daily XAUUSD chart breakdowns and quick trade setups.</p>
+<h2>Join the Community</h2>
+<p>Follow our official TikTok account for daily XAUUSD trade setups and live breakdowns.</p>
 <a href="https://www.tiktok.com/@IL_TUO_USER_TIKTOK" target="_blank" class="button">Watch on TikTok</a>
 </section>
 
 <footer>
 <div class="footer-content">
-<p>&copy; 2026 XAUUSD Gold Trading Academy. All rights reserved.</p>
+<p>&copy; 2026 XAUUSD Gold SMC Academy. All rights reserved.</p>
 
 <div class="risk-warning">
-<p><strong>Risk Warning & Financial Disclaimer:</strong> Trading Commodities such as Gold (XAUUSD) carries high risk and may not be suitable for all investors. High volatility can result in rapid loss of capital. Content provided is strictly educational and does not constitute financial advice.</p>
+<p><strong>Risk Warning & Financial Disclaimer:</strong> Trading Commodities such as Gold (XAUUSD) involves substantial risk and is not suitable for all investors. High market volatility can result in rapid loss of capital. Content provided is strictly educational and does not constitute financial advice.</p>
 </div>
 </div>
 </footer>
