@@ -250,7 +250,7 @@ color:#888;
 font-size:14px;
 }
 
-/* VIDEO PLAYER HTML5 NATIVI (SENZA BLOCCHI YOUTUBE) */
+/* VIDEO PLAYER SOLTANTO INTERNI SUL SITO */
 .video-grid {
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -270,11 +270,11 @@ transition:.25s;
 border-color:#eab308;
 }
 
-.video-player {
+.site-video-player {
 width:100%;
-height:auto;
-max-height:220px;
+height:220px;
 background:#000;
+display:block;
 outline:none;
 }
 
@@ -291,6 +291,129 @@ color:#fff;
 .video-info p {
 color:#888;
 font-size:14px;
+}
+
+/* CHAT COMMUNITY CON PROFANITY FILTER */
+.chat-container {
+background:#0b0b0b;
+border:1px solid #202020;
+border-radius:12px;
+max-width:900px;
+margin:0 auto;
+overflow:hidden;
+display:flex;
+flex-direction:column;
+height:500px;
+}
+
+.chat-header {
+background:#111;
+padding:15px 20px;
+border-bottom:1px solid #202020;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.chat-header h3 {
+font-size:16px;
+color:#fff;
+}
+
+.chat-status {
+font-size:12px;
+color:#22c55e;
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+.chat-status::before {
+content:"";
+width:8px;
+height:8px;
+background:#22c55e;
+border-radius:50%;
+display:inline-block;
+}
+
+.chat-messages {
+flex:1;
+padding:20px;
+overflow-y:auto;
+display:flex;
+flex-direction:column;
+gap:12px;
+background:#070707;
+}
+
+.chat-msg {
+background:#121212;
+border:1px solid #1e1e1e;
+padding:10px 14px;
+border-radius:8px;
+max-width:85%;
+font-size:14px;
+}
+
+.chat-msg .username {
+font-weight:bold;
+color:#eab308;
+font-size:12px;
+margin-bottom:2px;
+}
+
+.chat-msg .time {
+font-size:10px;
+color:#555;
+margin-left:8px;
+}
+
+.chat-msg.system-msg {
+border-color:#ca8a04;
+background:rgba(234, 179, 8, 0.05);
+}
+
+.chat-msg.system-msg .username {
+color:#fde047;
+}
+
+.chat-input-area {
+padding:15px;
+background:#111;
+border-top:1px solid #202020;
+display:flex;
+gap:10px;
+}
+
+.chat-input-area input {
+flex:1;
+background:#050505;
+border:1px solid #252525;
+border-radius:6px;
+padding:12px 15px;
+color:#fff;
+font-size:14px;
+outline:none;
+}
+
+.chat-input-area input:focus {
+border-color:#eab308;
+}
+
+.chat-input-area button {
+background:#ca8a04;
+color:#fff;
+border:none;
+padding:0 25px;
+border-radius:6px;
+font-weight:600;
+cursor:pointer;
+transition:.2s;
+}
+
+.chat-input-area button:hover {
+background:#a16207;
 }
 
 .about{
@@ -390,6 +513,7 @@ XAUUSD <span>•</span> GOLD SMC ACADEMY
 <a href="#chart">Gold Chart</a>
 <a href="#breakdowns">Setups</a>
 <a href="#videos">Videos</a>
+<a href="#chat">Live Chat</a>
 <a href="#join">TikTok</a>
 </nav>
 </div>
@@ -540,20 +664,21 @@ Visual proof of SMC execution models on Gold charts.
 </div>
 </section>
 
-<!-- SEZIONE VIDEO NATIVI CON PLAYER HTML5 INTEGRATO (CARICAMENTO GARANTITO AL 100%) -->
+<!-- SEZIONE VIDEO - SOLTANTO PLAYER INTERNO AL SITO SENZA PIATTAFORME ESTERNE -->
 <section class="section" id="videos">
 <div class="section-header">
-<h2>XAUUSD Video Lessons</h2>
+<h2>XAUUSD On-Site Video Lessons</h2>
 <p>
-Direct video breakdowns of institutional Gold setups.
+Watch full institutional Gold video breakdowns directly inside our platform.
 </p>
 </div>
 
 <div class="video-grid">
 
 <div class="video-card">
-  <video class="video-player" controls poster="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80">
-    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+  <video class="site-video-player" controls preload="metadata" controlsList="nodownload">
+    <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+    Your browser does not support the video tag.
   </video>
   <div class="video-info">
     <h4>01. XAUUSD Liquidity Sweeps</h4>
@@ -562,8 +687,9 @@ Direct video breakdowns of institutional Gold setups.
 </div>
 
 <div class="video-card">
-  <video class="video-player" controls poster="https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=600&q=80">
-    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
+  <video class="site-video-player" controls preload="metadata" controlsList="nodownload">
+    <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+    Your browser does not support the video tag.
   </video>
   <div class="video-info">
     <h4>02. Gold Fair Value Gaps (FVG)</h4>
@@ -572,8 +698,9 @@ Direct video breakdowns of institutional Gold setups.
 </div>
 
 <div class="video-card">
-  <video class="video-player" controls poster="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=600&q=80">
-    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" type="video/mp4">
+  <video class="site-video-player" controls preload="metadata" controlsList="nodownload">
+    <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+    Your browser does not support the video tag.
   </video>
   <div class="video-info">
     <h4>03. Order Block Executions</h4>
@@ -582,8 +709,9 @@ Direct video breakdowns of institutional Gold setups.
 </div>
 
 <div class="video-card">
-  <video class="video-player" controls poster="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80">
-    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" type="video/mp4">
+  <video class="site-video-player" controls preload="metadata" controlsList="nodownload">
+    <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+    Your browser does not support the video tag.
   </video>
   <div class="video-info">
     <h4>04. BOS vs CHOCH Structure</h4>
@@ -591,6 +719,45 @@ Direct video breakdowns of institutional Gold setups.
   </div>
 </div>
 
+</div>
+</section>
+
+<!-- SEZIONE LIVE CHAT COMMUNITY CON FILTRO ANTI-INSULTI -->
+<section class="section" id="chat">
+<div class="section-header">
+<h2>Live Gold Traders Chat</h2>
+<p>
+Discuss setups in real-time. Type <strong>/help</strong>, <strong>/gold</strong>, or <strong>/setup</strong> for chat commands.
+</p>
+</div>
+
+<div class="chat-container">
+  <div class="chat-header">
+    <h3>Gold SMC Community Room</h3>
+    <div class="chat-status">24 Traders Online</div>
+  </div>
+  
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-msg">
+      <div class="username">GoldTrader_99 <span class="time">10:14 AM</span></div>
+      <div>XAUUSD is sweeping Asian high right now at $2038. Looking for a 5m CHOCH.</div>
+    </div>
+    
+    <div class="chat-msg">
+      <div class="username">SMC_Institutional <span class="time">10:16 AM</span></div>
+      <div>Clean 15m Fair Value Gap sitting right below at $2024. Waiting for London mitigation.</div>
+    </div>
+
+    <div class="chat-msg system-msg">
+      <div class="username">System Bot <span class="time">10:20 AM</span></div>
+      <div>Welcome to Gold Room. Auto-moderation active. Respect members and avoid offensive language.</div>
+    </div>
+  </div>
+  
+  <div class="chat-input-area">
+    <input type="text" id="chatInput" placeholder="Type a message or /help..." onkeypress="handleKeyPress(event)">
+    <button onclick="sendMessage()">Send</button>
+  </div>
 </div>
 </section>
 
@@ -618,6 +785,70 @@ Gold moves fast, but institutional price structure remains systematic. Master li
 </div>
 </div>
 </footer>
+
+<script>
+// Lista parole per filtro insulti e bestemmie (Auto-Censura)
+const badWords = ["dio", "porco", "stronzo", "cazzo", "coglioneeeee", "coglione", "merda", "vaffanculo", "bastardo", "troia", "puttana"];
+
+function cleanMessage(text) {
+  let cleaned = text;
+  badWords.forEach(word => {
+    const regex = new RegExp("\\b" + word + "\\b", "gi");
+    cleaned = cleaned.replace(regex, "***");
+  });
+  return cleaned;
+}
+
+function handleKeyPress(e) {
+  if (e.key === 'Enter') {
+    sendMessage();
+  }
+}
+
+function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const chatMessages = document.getElementById('chatMessages');
+  const rawText = input.value.trim();
+  
+  if (rawText === '') return;
+  
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  
+  // Gestione Comandi Chat
+  if (rawText.startsWith('/')) {
+    let responseText = "";
+    if (rawText.toLowerCase() === '/gold') {
+      responseText = "Current Gold (XAUUSD) Bias: Bullish expansion towards Daily FVG ($2045).";
+    } else if (rawText.toLowerCase() === '/help') {
+      responseText = "Available commands: /gold (Current bias), /setup (Today's key level), /help";
+    } else if (rawText.toLowerCase() === '/setup') {
+      responseText = "Key Setup: Watch London Open sweep above Asian High ($2040) for short opportunity.";
+    } else {
+      responseText = "Unknown command. Type /help for assistance.";
+    }
+    
+    const sysDiv = document.createElement('div');
+    sysDiv.className = 'chat-msg system-msg';
+    sysDiv.innerHTML = `<div class="username">System Bot <span class="time">${timeStr}</span></div><div>${responseText}</div>`;
+    chatMessages.appendChild(sysDiv);
+    input.value = '';
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return;
+  }
+  
+  // Censura ed Invio Messaggio Utente
+  const filteredText = cleanMessage(rawText);
+  
+  const msgDiv = document.createElement('div');
+  msgDiv.className = 'chat-msg';
+  msgDiv.innerHTML = `<div class="username">You <span class="time">${timeStr}</span></div><div>${filteredText}</div>`;
+  
+  chatMessages.appendChild(msgDiv);
+  input.value = '';
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+</script>
 
 </body>
 </html>
