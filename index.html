@@ -2,698 +2,623 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALAZ</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SYED SIBGHATULLAH</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
-html{
-    scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
-    min-height:100vh;
-    background:#050505;
-    color:white;
-    font-family:Arial,Helvetica,sans-serif;
-    overflow-x:hidden;
+font-family:Arial,Helvetica,sans-serif;
+background:#050505;
+color:#fff;
+overflow-x:hidden;
 }
 
-/* RAINBOW BACKGROUND */
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:-2;
-    background:
-        radial-gradient(circle at 15% 20%,rgba(255,0,80,.22),transparent 28%),
-        radial-gradient(circle at 85% 20%,rgba(0,170,255,.22),transparent 28%),
-        radial-gradient(circle at 50% 90%,rgba(150,0,255,.20),transparent 30%),
-        #050505;
+:root{
+--pink:#ff2f92;
+--purple:#8b3dff;
+--blue:#20bfff;
+--green:#22c76b;
+--yellow:#ffd21f;
+--red:#ff3158;
+--card:#101010;
+--border:rgba(255,255,255,.12);
 }
 
 /* NAV */
 nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:1000;
-    padding:16px 4%;
-    background:rgba(0,0,0,.65);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid rgba(255,255,255,.12);
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:1000;
+background:rgba(0,0,0,.75);
+backdrop-filter:blur(18px);
+border-bottom:1px solid var(--border);
 }
 
-.navbar{
-    max-width:1500px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
+.nav{
+width:94%;
+max-width:1500px;
+margin:auto;
+min-height:75px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
 }
 
 .logo{
-    font-size:25px;
-    font-weight:1000;
-    letter-spacing:7px;
-    white-space:nowrap;
-    background:linear-gradient(
-        90deg,
-        #ff1744,
-        #ff9100,
-        #ffee00,
-        #00d95f,
-        #00bfff,
-        #8b35ff
-    );
-    -webkit-background-clip:text;
-    color:transparent;
+font-size:20px;
+font-weight:900;
+letter-spacing:3px;
+white-space:nowrap;
+background:linear-gradient(
+90deg,
+#ff3158,
+#ff9d00,
+#ffd21f,
+#22c76b,
+#20bfff,
+#8b3dff,
+#ff2f92
+);
+-webkit-background-clip:text;
+color:transparent;
 }
 
-.nav-links{
-    display:flex;
-    gap:8px;
-    overflow-x:auto;
-    scrollbar-width:none;
+.links{
+display:flex;
+gap:5px;
+overflow-x:auto;
+scrollbar-width:none;
 }
 
-.nav-links::-webkit-scrollbar{
-    display:none;
+.links::-webkit-scrollbar{display:none}
+
+.links a{
+white-space:nowrap;
+padding:10px 14px;
+border-radius:8px;
+font-size:12px;
+font-weight:bold;
+color:#bbb;
+transition:.2s;
 }
 
-.nav-links a{
-    min-width:max-content;
-    padding:10px 16px;
-    border-radius:10px;
-    color:white;
-    font-size:13px;
-    font-weight:bold;
-    transition:.25s;
-}
-
-.nav-links a:hover{
-    background:linear-gradient(
-        90deg,
-        #ff1744,
-        #ff9100,
-        #00d95f,
-        #00bfff,
-        #8b35ff
-    );
-    transform:translateY(-2px);
+.links a:hover{
+color:#fff;
+background:rgba(255,255,255,.1);
 }
 
 /* HERO */
 .hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-    padding:120px 5% 80px;
-    text-align:center;
-    overflow:hidden;
+min-height:100vh;
+padding:130px 5% 80px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+position:relative;
+overflow:hidden;
+background:
+linear-gradient(
+rgba(0,0,0,.45),
+rgba(0,0,0,.88)
+),
+url("https://commons.wikimedia.org/wiki/Special:FilePath/Gay_Pride_flag_of_Pakistan.png")
+center/cover;
 }
 
 .hero::before{
-    content:"";
-    position:absolute;
-    width:650px;
-    height:650px;
-    border-radius:50%;
-    background:conic-gradient(
-        #ff1744,
-        #ff9100,
-        #ffee00,
-        #00d95f,
-        #00bfff,
-        #8b35ff,
-        #ff1744
-    );
-    filter:blur(90px);
-    opacity:.23;
-    animation:rotate 15s linear infinite;
+content:"";
+position:absolute;
+width:650px;
+height:650px;
+border-radius:50%;
+background:conic-gradient(
+#ff3158,
+#ff9d00,
+#ffd21f,
+#22c76b,
+#20bfff,
+#8b3dff,
+#ff3158
+);
+filter:blur(100px);
+opacity:.28;
+animation:spin 16s linear infinite;
 }
 
-@keyframes rotate{
-    from{transform:rotate(0deg)}
-    to{transform:rotate(360deg)}
+@keyframes spin{
+to{transform:rotate(360deg)}
 }
 
 .hero-content{
-    position:relative;
-    z-index:2;
+position:relative;
+z-index:2;
+width:100%;
+max-width:1200px;
 }
 
 .hero h1{
-    font-size:clamp(90px,18vw,230px);
-    line-height:.8;
-    letter-spacing:-10px;
-    background:linear-gradient(
-        90deg,
-        #ff1744,
-        #ff9100,
-        #ffee00,
-        #00d95f,
-        #00bfff,
-        #8b35ff
-    );
-    -webkit-background-clip:text;
-    color:transparent;
-    text-shadow:0 0 60px rgba(255,255,255,.08);
+font-size:clamp(50px,9vw,125px);
+line-height:.9;
+letter-spacing:-5px;
+background:linear-gradient(
+90deg,
+#ff3158,
+#ff9d00,
+#ffd21f,
+#22c76b,
+#20bfff,
+#8b3dff
+);
+-webkit-background-clip:text;
+color:transparent;
 }
 
-.hero-sub{
-    margin-top:35px;
-    display:flex;
-    justify-content:center;
-    gap:8px;
-    flex-wrap:wrap;
-}
-
-.flag{
-    width:70px;
-    height:44px;
-    border-radius:7px;
-    box-shadow:0 8px 25px rgba(0,0,0,.4);
-    object-fit:cover;
-}
-
-.rainbow{
-    background:linear-gradient(
-        to bottom,
-        #e40303 0 16.6%,
-        #ff8c00 16.6% 33.2%,
-        #ffed00 33.2% 49.8%,
-        #008026 49.8% 66.4%,
-        #004dff 66.4% 83%,
-        #750787 83% 100%
-    );
-}
-
-.progress{
-    background:
-        linear-gradient(
-            to bottom,
-            #e40303 0 14%,
-            #ff8c00 14% 28%,
-            #ffed00 28% 42%,
-            #008026 42% 56%,
-            #004dff 56% 70%,
-            #750787 70% 84%,
-            #111 84% 100%
-        );
-}
-
-.hero-photo{
-    margin:45px auto 0;
-    width:min(1100px,95%);
-    height:430px;
-    object-fit:cover;
-    border-radius:25px;
-    border:1px solid rgba(255,255,255,.18);
-    box-shadow:
-        0 0 0 3px rgba(255,255,255,.02),
-        0 30px 100px rgba(0,0,0,.7);
+.hero img{
+width:min(1000px,95%);
+height:430px;
+object-fit:cover;
+margin:45px auto 0;
+border-radius:24px;
+border:1px solid rgba(255,255,255,.2);
+box-shadow:0 30px 100px rgba(0,0,0,.7);
 }
 
 /* SECTIONS */
 section{
-    padding:110px 4%;
+padding:110px 4%;
 }
 
-.section{
-    max-width:1500px;
-    margin:auto;
+.container{
+width:92%;
+max-width:1500px;
+margin:auto;
 }
 
-.section-title{
-    text-align:center;
-    font-size:clamp(45px,7vw,90px);
-    margin-bottom:45px;
-    letter-spacing:-3px;
+.title{
+font-size:clamp(42px,7vw,90px);
+text-align:center;
+margin-bottom:45px;
+letter-spacing:-4px;
 }
 
-/* IMAGE GRID */
+/* GALLERY */
 .gallery{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:18px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
 }
 
-.card{
-    height:360px;
-    position:relative;
-    overflow:hidden;
-    border-radius:20px;
-    border:1px solid rgba(255,255,255,.12);
-    background:#111;
+.gallery-card{
+height:350px;
+border-radius:18px;
+overflow:hidden;
+border:1px solid var(--border);
+background:#111;
+position:relative;
 }
 
-.card.large{
-    grid-column:span 2;
-    grid-row:span 2;
-    height:738px;
+.gallery-card.big{
+grid-column:span 2;
+grid-row:span 2;
+height:718px;
 }
 
-.card img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:.6s;
+.gallery-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.6s;
 }
 
-.card:hover img{
-    transform:scale(1.08);
+.gallery-card:hover img{
+transform:scale(1.07);
 }
 
-.card::after{
-    content:"ALAZ";
-    position:absolute;
-    left:20px;
-    bottom:17px;
-    font-size:22px;
-    font-weight:1000;
-    letter-spacing:5px;
-    text-shadow:0 3px 15px black;
+.gallery-card::after{
+content:"SYED SIBGHATULLAH";
+position:absolute;
+bottom:18px;
+left:20px;
+font-weight:900;
+letter-spacing:2px;
+font-size:15px;
+text-shadow:0 3px 15px #000;
 }
 
 /* PEOPLE */
+.people{
+background:
+radial-gradient(
+circle at center,
+rgba(139,61,255,.16),
+transparent 55%
+);
+}
+
 .people-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:22px;
 }
 
-.people-card{
-    height:500px;
-    overflow:hidden;
-    border-radius:22px;
-    position:relative;
-    border:1px solid rgba(255,255,255,.12);
+.person{
+height:540px;
+border-radius:22px;
+overflow:hidden;
+border:1px solid var(--border);
+position:relative;
+background:#111;
 }
 
-.people-card img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:.6s;
+.person img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.5s;
 }
 
-.people-card:hover img{
-    transform:scale(1.06);
+.person:hover img{
+transform:scale(1.06);
 }
 
-.people-card::after{
-    content:"ALAZ";
-    position:absolute;
-    bottom:20px;
-    left:25px;
-    font-size:28px;
-    font-weight:1000;
-    letter-spacing:6px;
-    text-shadow:0 3px 20px #000;
+.person::after{
+content:"SYED SIBGHATULLAH";
+position:absolute;
+bottom:20px;
+left:22px;
+font-size:18px;
+font-weight:900;
+letter-spacing:2px;
+text-shadow:0 3px 18px #000;
 }
 
-/* GIANT BRAND */
+/* FLAGS */
+.flags{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+.flag{
+height:250px;
+border-radius:20px;
+overflow:hidden;
+border:1px solid var(--border);
+background:#111;
+}
+
+.flag img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* BIG BRAND */
 .brand{
-    min-height:75vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
+min-height:75vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+position:relative;
+overflow:hidden;
 }
 
 .brand::before{
-    content:"";
-    position:absolute;
-    width:100%;
-    height:10px;
-    top:50%;
-    transform:translateY(-50%);
-    background:linear-gradient(
-        90deg,
-        #ff1744,
-        #ff9100,
-        #ffee00,
-        #00d95f,
-        #00bfff,
-        #8b35ff
-    );
-    filter:blur(20px);
+content:"";
+position:absolute;
+width:100%;
+height:10px;
+background:linear-gradient(
+90deg,
+#ff3158,
+#ff9d00,
+#ffd21f,
+#22c76b,
+#20bfff,
+#8b3dff,
+#ff2f92
+);
+filter:blur(18px);
 }
 
 .brand h2{
-    position:relative;
-    font-size:clamp(80px,18vw,240px);
-    letter-spacing:-10px;
-    background:linear-gradient(
-        90deg,
-        #ff1744,
-        #ff9100,
-        #ffee00,
-        #00d95f,
-        #00bfff,
-        #8b35ff
-    );
-    -webkit-background-clip:text;
-    color:transparent;
+position:relative;
+font-size:clamp(55px,12vw,180px);
+line-height:.9;
+letter-spacing:-6px;
+background:linear-gradient(
+90deg,
+#ff3158,
+#ff9d00,
+#ffd21f,
+#22c76b,
+#20bfff,
+#8b3dff,
+#ff2f92
+);
+-webkit-background-clip:text;
+color:transparent;
 }
-
-/* FLAG WALL */
-.flag-wall{
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    gap:15px;
-}
-
-.flag-box{
-    height:180px;
-    border-radius:18px;
-    overflow:hidden;
-    border:1px solid rgba(255,255,255,.1);
-    position:relative;
-}
-
-.flag-box::after{
-    content:"ALAZ";
-    position:absolute;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:25px;
-    font-weight:1000;
-    letter-spacing:5px;
-    color:white;
-    text-shadow:0 3px 15px #000;
-    background:rgba(0,0,0,.12);
-}
-
-/* COLORS */
-.c1{background:linear-gradient(#ff0018 0 16%,#ff8a00 16% 33%,#ffe600 33% 50%,#00bd3b 50% 66%,#0099ff 66% 83%,#7715c9 83%)}
-.c2{background:linear-gradient(135deg,#ff1744,#ff9100,#ffee00,#00d95f,#00bfff,#8b35ff)}
-.c3{background:linear-gradient(135deg,#ff00a8,#7500ff,#00d9ff,#00ff8c,#ffee00,#ff5e00)}
-.c4{background:linear-gradient(45deg,#ff003c,#ff8a00,#ffee00,#00d95f,#008cff,#7b00ff)}
-.c5{background:linear-gradient(90deg,#ff004c,#ff6b00,#ffe600,#00e676,#00b8ff,#651fff)}
-.c6{background:linear-gradient(135deg,#ff1744 0 25%,#ff9100 25% 45%,#00d95f 45% 65%,#00bfff 65% 82%,#8b35ff 82%)}
 
 /* FOOTER */
 footer{
-    padding:80px 20px;
-    text-align:center;
-    border-top:1px solid rgba(255,255,255,.1);
-    background:#020202;
+padding:70px 20px;
+text-align:center;
+background:#020202;
+border-top:1px solid var(--border);
 }
 
 .footer-logo{
-    font-size:70px;
-    font-weight:1000;
-    letter-spacing:8px;
-    background:linear-gradient(
-        90deg,
-        #ff1744,
-        #ff9100,
-        #ffee00,
-        #00d95f,
-        #00bfff,
-        #8b35ff
-    );
-    -webkit-background-clip:text;
-    color:transparent;
+font-size:clamp(35px,7vw,75px);
+font-weight:900;
+letter-spacing:4px;
+background:linear-gradient(
+90deg,
+#ff3158,
+#ff9d00,
+#ffd21f,
+#22c76b,
+#20bfff,
+#8b3dff
+);
+-webkit-background-clip:text;
+color:transparent;
 }
 
 /* MOBILE */
 @media(max-width:900px){
 
-    .gallery{
-        grid-template-columns:1fr 1fr;
-    }
+.gallery{
+grid-template-columns:1fr 1fr;
+}
 
-    .card.large{
-        grid-column:span 2;
-        height:500px;
-    }
+.gallery-card.big{
+grid-column:span 2;
+height:500px;
+}
 
-    .people-grid{
-        grid-template-columns:1fr 1fr;
-    }
+.people-grid{
+grid-template-columns:1fr 1fr;
+}
 
-    .flag-wall{
-        grid-template-columns:repeat(3,1fr);
-    }
+.flags{
+grid-template-columns:1fr 1fr;
+}
 }
 
 @media(max-width:600px){
 
-    nav{
-        padding:12px 3%;
-    }
+.nav{
+display:block;
+padding:12px 0;
+}
 
-    .navbar{
-        display:block;
-    }
+.logo{
+text-align:center;
+margin-bottom:8px;
+}
 
-    .logo{
-        text-align:center;
-        margin-bottom:10px;
-    }
+.hero{
+padding-top:145px;
+}
 
-    .nav-links{
-        padding-bottom:3px;
-    }
+.hero h1{
+letter-spacing:-3px;
+}
 
-    .hero{
-        padding-top:150px;
-    }
+.hero img{
+height:280px;
+}
 
-    .hero h1{
-        letter-spacing:-5px;
-    }
+section{
+padding:75px 4%;
+}
 
-    .hero-photo{
-        height:280px;
-    }
+.gallery{
+grid-template-columns:1fr;
+}
 
-    section{
-        padding:75px 4%;
-    }
+.gallery-card,
+.gallery-card.big{
+grid-column:span 1;
+grid-row:span 1;
+height:350px;
+}
 
-    .gallery{
-        grid-template-columns:1fr;
-    }
+.people-grid,
+.flags{
+grid-template-columns:1fr;
+}
 
-    .card,
-    .card.large{
-        grid-column:span 1;
-        grid-row:span 1;
-        height:330px;
-    }
+.person{
+height:430px;
+}
 
-    .people-grid{
-        grid-template-columns:1fr;
-    }
-
-    .people-card{
-        height:420px;
-    }
-
-    .flag-wall{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .flag-box{
-        height:140px;
-    }
-
-    .footer-logo{
-        font-size:55px;
-    }
+.flag{
+height:220px;
+}
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <nav>
-    <div class="navbar">
+<div class="nav">
 
-        <div class="logo">ALAZ</div>
+<div class="logo">
+SYED SIBGHATULLAH
+</div>
 
-        <div class="nav-links">
-            <a href="#home">ALAZ</a>
-            <a href="#gallery">ALAZ</a>
-            <a href="#people">ALAZ</a>
-            <a href="#flags">ALAZ</a>
-            <a href="#brand">ALAZ</a>
-        </div>
+<div class="links">
+<a href="#home">SYED SIBGHATULLAH</a>
+<a href="#gallery">SYED SIBGHATULLAH</a>
+<a href="#people">SYED SIBGHATULLAH</a>
+<a href="#flags">SYED SIBGHATULLAH</a>
+<a href="#brand">SYED SIBGHATULLAH</a>
+</div>
 
-    </div>
+</div>
 </nav>
 
 
-<!-- HERO -->
 <section class="hero" id="home">
 
-    <div class="hero-content">
+<div class="hero-content">
 
-        <h1>ALAZ</h1>
+<h1>SYED SIBGHATULLAH</h1>
 
-        <div class="hero-sub">
-            <div class="flag rainbow"></div>
-            <div class="flag progress"></div>
-            <div class="flag rainbow"></div>
-            <div class="flag progress"></div>
-        </div>
+<img
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Gay_Pride_flag_of_Pakistan.png"
+alt="SYED SIBGHATULLAH"
+>
 
-        <img
-            class="hero-photo"
-            src="https://commons.wikimedia.org/wiki/Special:FilePath/People_with_rainbow_colored_flags_walking_down_the_street_at_Pride_parade_day_(51292761087).jpg"
-            alt="ALAZ"
-        >
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- GALLERY -->
 <section id="gallery">
 
-    <div class="section">
+<div class="container">
 
-        <h2 class="section-title">ALAZ</h2>
+<h2 class="title">SYED SIBGHATULLAH</h2>
 
-        <div class="gallery">
+<div class="gallery">
 
-            <div class="card large">
-                <img
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Rainbow_Flag_during_Queer_Pride_Rally.jpg"
-                    alt="ALAZ"
-                >
-            </div>
+<div class="gallery-card big">
+<img
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Pakistani_Trans_National_Pride_flag.png"
+alt="SYED SIBGHATULLAH"
+>
+</div>
 
-            <div class="card">
-                <img
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Rainbow_Flag_Gay_Pride_New_York_2008.jpg"
-                    alt="ALAZ"
-                >
-            </div>
+<div class="gallery-card">
+<img
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Transgender_Pakistani_Pride_Ensign.png"
+alt="SYED SIBGHATULLAH"
+>
+</div>
 
-            <div class="card">
-                <img
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Flaring_Freedom.jpg"
-                    alt="ALAZ"
-                >
-            </div>
+<div class="gallery-card">
+<img
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Gay_Pride_flag_of_Pakistan.png"
+alt="SYED SIBGHATULLAH"
+>
+</div>
 
-            <div class="card">
-                <img
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/People_with_rainbow_colored_flags_walking_down_the_street_at_Pride_parade_day_(51292761087).jpg"
-                    alt="ALAZ"
-                >
-            </div>
+<div class="gallery-card">
+<img
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Transgenders_Pakistan.jpg"
+alt="SYED SIBGHATULLAH"
+>
+</div>
 
-            <div class="card">
-                <img
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Rainbow_flag_at_Prague_Pride_2011_parade.jpg"
-                    alt="ALAZ"
-                >
-            </div>
+<div class="gallery-card">
+<img
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Hijra_Protest_Islamabad.jpg"
+alt="SYED SIBGHATULLAH"
+>
+</div>
 
-        </div>
+</div>
 
-    </div>
-
-</section>
-
-
-<!-- PEOPLE -->
-<section id="people">
-
-    <div class="section">
-
-        <h2 class="section-title">ALAZ</h2>
-
-        <div class="people-grid">
-
-            <div class="people-card">
-                <img
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/People_with_rainbow_colored_flags_walking_down_the_street_at_Pride_parade_day_(51292761087).jpg"
-                    alt="ALAZ"
-                >
-            </div>
-
-            <div class="people-card">
-                <img
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Flaring_Freedom.jpg"
-                    alt="ALAZ"
-                >
-            </div>
-
-            <div class="people-card">
-                <img
-                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Rainbow_Flag_Gay_Pride_New_York_2008.jpg"
-                    alt="ALAZ"
-                >
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- FLAGS -->
+<section class="people" id="people">
+
+<div class="container">
+
+<h2 class="title">SYED SIBGHATULLAH</h2>
+
+<div class="people-grid">
+
+<div class="person">
+<img
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Ali_Sethi.jpg"
+alt="SYED SIBGHATULLAH"
+>
+</div>
+
+<div class="person">
+<img
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Nisha_Rao-1-.jpg"
+alt="SYED SIBGHATULLAH"
+>
+</div>
+
+<div class="person">
+<img
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Shyraa_during_Miss_Trans_Pakistan.jpg"
+alt="SYED SIBGHATULLAH"
+>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
 <section id="flags">
 
-    <div class="section">
+<div class="container">
 
-        <h2 class="section-title">ALAZ</h2>
+<h2 class="title">SYED SIBGHATULLAH</h2>
 
-        <div class="flag-wall">
+<div class="flags">
 
-            <div class="flag-box c1"></div>
-            <div class="flag-box c2"></div>
-            <div class="flag-box c3"></div>
-            <div class="flag-box c4"></div>
-            <div class="flag-box c5"></div>
-            <div class="flag-box c6"></div>
+<div class="flag">
+<img
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Gay_Pride_flag_of_Pakistan.png"
+alt="SYED SIBGHATULLAH"
+>
+</div>
 
-        </div>
+<div class="flag">
+<img
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Pakistani_Trans_National_Pride_flag.png"
+alt="SYED SIBGHATULLAH"
+>
+</div>
 
-    </div>
+<div class="flag">
+<img
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Transgender_Pakistani_Pride_Ensign.png"
+alt="SYED SIBGHATULLAH"
+>
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- GIANT BRAND -->
 <section class="brand" id="brand">
-    <h2>ALAZ</h2>
+<h2>SYED SIBGHATULLAH</h2>
 </section>
 
 
-<!-- FOOTER -->
 <footer>
 
-    <div class="footer-logo">ALAZ</div>
-
-    <div class="hero-sub">
-        <div class="flag rainbow"></div>
-        <div class="flag progress"></div>
-        <div class="flag rainbow"></div>
-    </div>
+<div class="footer-logo">
+SYED SIBGHATULLAH
+</div>
 
 </footer>
 
